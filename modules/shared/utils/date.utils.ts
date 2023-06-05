@@ -1,4 +1,4 @@
-import { Range } from '@modules/shared/common/filter';
+import { Range } from '@/modules/shared/common/filter';
 import { add, sub } from 'date-fns';
 
 export function getFilterDateRange(): Range<string> {

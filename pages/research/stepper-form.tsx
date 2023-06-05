@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NoLayout } from '@modules/shared/components/NoLayout';
+import { NoLayout } from '@/modules/shared/components/NoLayout';
 
 /**
  * Navigate between step without losing data

@@ -1,8 +1,8 @@
-import { ApiClient } from '@modules/shared/services';
+import { ApiClient } from '@/modules/shared/services';
 import {
   MonthlyMoneyConfig,
   PatchUserPaidMoneyRequest
-} from '@modules/monthly-money/clients/monthly-money.types';
+} from '@/modules/monthly-money/clients/monthly-money.types';
 
 export const MonthlyMoneyApiClient = {
   getAllConfigs(): Promise<MonthlyMoneyConfig[]> {

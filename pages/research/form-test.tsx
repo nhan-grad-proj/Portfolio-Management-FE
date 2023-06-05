@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { NextPageWithLayout } from '../_app';
-import { NoLayout } from '@modules/shared/components/NoLayout';
+import { NoLayout } from '@/modules/shared/components/NoLayout';
 import { createContext, useContext, useRef } from 'react';
 
 interface Observer {

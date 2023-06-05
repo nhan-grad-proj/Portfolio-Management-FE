@@ -1,7 +1,7 @@
 import React from 'react';
-import { Paginator } from '@modules/shared/components/Pagination/Paginator';
+import { Paginator } from '@/modules/shared/components/Pagination/Paginator';
 import { useDispatch } from 'react-redux';
-import { userActions } from '@modules/user/store/user.slice';
+import { userActions } from '@/modules/user/store/user.slice';
 
 type Props = {
   totalRecords?: number;

@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import classnames from 'classnames';
 import unique from 'lodash.uniq';
-import { Key } from '@modules/shared/constants';
+import { Key } from '@/modules/shared/constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRemove } from '@fortawesome/free-solid-svg-icons';
 import classes from './InputMutipleValues.module.scss';

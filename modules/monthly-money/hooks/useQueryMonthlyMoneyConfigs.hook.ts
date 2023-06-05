@@ -1,4 +1,4 @@
-import { MonthlyMoneyApiClient } from '@modules/monthly-money/services';
+import { MonthlyMoneyApiClient } from '@/modules/monthly-money/services';
 import { useQuery } from 'react-query';
 
 type Props = {

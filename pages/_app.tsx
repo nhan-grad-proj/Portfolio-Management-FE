@@ -7,9 +7,9 @@ import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { NextPage } from 'next';
-import { UserProvider } from '@modules/user/contexts/UserContext/user.provider';
-import { AdminLayout } from '@modules/shared/layouts/AdminLayout/AdminLayout';
-import { useErrorHandler } from '@modules/error-handling/useErrorHandler';
+import { UserProvider } from '@/modules/user/contexts/UserContext/user.provider';
+import { AdminLayout } from '@/modules/shared/layouts/AdminLayout/AdminLayout';
+import { useErrorHandler } from '@/modules/error-handling/useErrorHandler';
 import { store } from '../config/store';
 
 export type NextPageWithLayout = NextPage & {

@@ -1,5 +1,5 @@
 import { memo, useState } from 'react';
-import { NoLayout } from '@modules/shared/components/NoLayout';
+import { NoLayout } from '@/modules/shared/components/NoLayout';
 
 const EmployeeProfile = memo(function EmployeeProfile({
   name

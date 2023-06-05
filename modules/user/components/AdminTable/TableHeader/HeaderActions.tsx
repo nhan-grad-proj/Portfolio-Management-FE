@@ -5,9 +5,9 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import {
   AddUserDrawer,
   CreateUserInputs
-} from '@modules/user/components/AdminTable/TableHeader/AddUserDrawer';
-import { useQueryMonthlyMoneyConfigs } from '@modules/monthly-money/hooks';
-import { useMutateCreateUser } from '@modules/user/hooks/data/useMutateCreateUser';
+} from '@/modules/user/components/AdminTable/TableHeader/AddUserDrawer';
+import { useQueryMonthlyMoneyConfigs } from '@/modules/monthly-money/hooks';
+import { useMutateCreateUser } from '@/modules/user/hooks/data/useMutateCreateUser';
 
 export function HeaderActions(): React.ReactElement {
   const addNewUserButtonRef = React.useRef<HTMLButtonElement>(null);

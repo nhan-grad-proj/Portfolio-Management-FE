@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import { useRouter } from 'next/router';
-import { UserIdentity } from '@modules/auth/services/user-identity';
-import { useUser } from '@modules/user/contexts/UserContext/useUser.hook';
+import { UserIdentity } from '@/modules/auth/services/user-identity';
+import { useUser } from '@/modules/user/contexts/UserContext/useUser.hook';
 import { useQueryMyProfile } from '../../../user/hooks/data/useQueryMyProfile';
 
 type AuthenticatedGuardProps = PropsWithChildren<{

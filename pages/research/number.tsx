@@ -1,10 +1,10 @@
 /* eslint-disable no-console */
-import { NoLayout } from '@modules/shared/components/NoLayout';
+import { NoLayout } from '@/modules/shared/components/NoLayout';
 import { NextPageWithLayout } from '../_app';
-import { NumberInputControl } from '@modules/ui-system/components/form/NumberInput/Control/NumberInputControl';
-import { NumberInputField } from '@modules/ui-system/components/form/NumberInput/Input/NumerInputField';
-import { NumberDecrementStepper } from '@modules/ui-system/components/form/NumberInput/Stepper/NumberDecrementStepper';
-import { NumberIncrementStepper } from '@modules/ui-system/components/form/NumberInput/Stepper/NumberIncrementStepper';
+import { NumberInputControl } from '@/modules/ui-system/components/form/NumberInput/Control/NumberInputControl';
+import { NumberInputField } from '@/modules/ui-system/components/form/NumberInput/Input/NumerInputField';
+import { NumberDecrementStepper } from '@/modules/ui-system/components/form/NumberInput/Stepper/NumberDecrementStepper';
+import { NumberIncrementStepper } from '@/modules/ui-system/components/form/NumberInput/Stepper/NumberIncrementStepper';
 import { Controller, useForm } from 'react-hook-form';
 import { useState } from 'react';
 

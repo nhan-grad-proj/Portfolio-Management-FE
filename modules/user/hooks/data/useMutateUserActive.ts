@@ -1,8 +1,8 @@
-import { userActions } from '@modules/user/store/user.slice';
+import { userActions } from '@/modules/user/store/user.slice';
 import { useDispatch } from 'react-redux';
 import { useMutation } from 'react-query';
 import { UserApiClient } from '../../services/user-api-client';
-import { useNotify } from '@modules/shared/hooks/useNotify.hook';
+import { useNotify } from '@/modules/shared/hooks/useNotify.hook';
 
 export function useMutateUserActive() {
   const toast = useNotify();

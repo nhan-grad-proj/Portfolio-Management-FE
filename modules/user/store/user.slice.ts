@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { isNil } from '@modules/shared/utils';
-import { FilterKey, FilterParam } from '@modules/shared/common/filter';
-import { Pagination } from '@modules/shared/clients';
-import { initialPaginationState } from '@modules/shared/common/pagination/pagination.reducer';
-import { getFilterDateRange } from '@modules/shared/utils/date.utils';
+import { isNil } from '@/modules/shared/utils';
+import { FilterKey, FilterParam } from '@/modules/shared/common/filter';
+import { Pagination } from '@/modules/shared/clients';
+import { initialPaginationState } from '@/modules/shared/common/pagination/pagination.reducer';
+import { getFilterDateRange } from '@/modules/shared/utils/date.utils';
 import { AdminFilter, AdminState } from './user-store.types';
 
 function getInitialUserState(): AdminState {

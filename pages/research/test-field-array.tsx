@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { NextPageWithLayout } from '../_app';
-import { NoLayout } from '@modules/shared/components/NoLayout';
+import { NoLayout } from '@/modules/shared/components/NoLayout';
 import { useFieldArray, useForm } from 'react-hook-form';
 
 type X = {

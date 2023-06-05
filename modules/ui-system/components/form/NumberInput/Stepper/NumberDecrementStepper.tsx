@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import { useNumberInputProvider } from '@modules/ui-system/components/form/NumberInput/number.context';
+import { useNumberInputProvider } from '@/modules/ui-system/components/form/NumberInput/number.context';
 import { forwardRef } from 'react';
 
 type Props = {};

@@ -1,5 +1,5 @@
-import { GetManyParams, Page } from '@modules/shared/clients/list.api';
-import { ApiClient } from '@modules/shared/services';
+import { GetManyParams, Page } from '@/modules/shared/clients/list.api';
+import { ApiClient } from '@/modules/shared/services';
 import {
   CreateUsersDto,
   ExtractNewEmailsDto,
@@ -9,7 +9,7 @@ import {
   UserRolesView
 } from '../models/user.type';
 import FormData from 'form-data';
-import { CreateUserType } from '@modules/user/constants/admin-management.constants';
+import { CreateUserType } from '@/modules/user/constants/admin-management.constants';
 
 export const UserApiClient = {
   getMyProfile(): Promise<User> {

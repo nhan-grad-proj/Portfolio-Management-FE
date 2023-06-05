@@ -1,4 +1,4 @@
-import { MonthlyConfig } from '@modules/monthly-money/types/monthly-config.types';
+import { MonthlyConfig } from '@/modules/monthly-money/types/monthly-config.types';
 
 export type OperationFee = {
   id: number;

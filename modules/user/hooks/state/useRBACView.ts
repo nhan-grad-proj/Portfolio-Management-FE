@@ -1,4 +1,4 @@
-import { ControlList, Right, Role } from '@modules/user/models/rbac.types';
+import { ControlList, Right, Role } from '@/modules/user/models/rbac.types';
 import { useEffect, useState } from 'react';
 
 type AccessControlView = Record<

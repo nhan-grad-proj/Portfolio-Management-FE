@@ -2,9 +2,9 @@ import {
   BaseNumberProps,
   NumberControlProps,
   NumberProviderProps
-} from '@modules/ui-system/components/form/NumberInput/types';
+} from '@/modules/ui-system/components/form/NumberInput/types';
 import { ChangeEvent, useCallback, useState } from 'react';
-import { callAllHandlers } from '@modules/ui-system/components/form/NumberInput/utilts';
+import { callAllHandlers } from '@/modules/ui-system/components/form/NumberInput/utilts';
 
 const SPECIAL_CHAR_IGNORE_MINUS = new RegExp(/[^\w.-]+/g);
 
