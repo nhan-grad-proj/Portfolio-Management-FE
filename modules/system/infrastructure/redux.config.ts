@@ -17,7 +17,9 @@ function makeStore() {
     reducer: rootReducer,
     middleware: [sagaMiddleware]
   });
+
   sagaMiddleware.run(rootSaga);
+
   return store;
 }
 

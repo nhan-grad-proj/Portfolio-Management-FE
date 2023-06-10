@@ -7,8 +7,7 @@ import { FullLoader } from '@/modules/shared/components/Loader/Full/FullLoader';
 import { useLoginMutation } from '@/modules/auth/hooks/useLoginMutation';
 import { NoLayout } from '@/modules/shared/components/NoLayout';
 import { UserIdentity } from '@/modules/auth/services/user-identity';
-import { NextPageWithLayout } from './_app';
-
+import { NextPageWithLayout } from '@/modules/system/infrastructure/next.types';
 const LoginPage: NextPageWithLayout = () => {
   const { isLoading, mutate: doLogin } = useLoginMutation();
   const router = useRouter();
