@@ -1,13 +1,13 @@
 import { useMutation } from 'react-query';
 import { useDispatch } from 'react-redux';
-import { UserApiClient } from '@/modules/user/services/user-api-client';
-import { userActions } from '@/modules/user/store/user.slice';
+import { UserApiClient } from 'modules/user/services/user-api-client';
+import { userActions } from 'modules/user/store/user.slice';
 import {
   AppError,
   useErrorHandler
-} from '@/modules/error-handling/useErrorHandler';
-import { ClientErrorCode } from '@/modules/error-handling/client-code';
-import { useNotify } from '@/modules/shared/hooks/useNotify.hook';
+} from 'modules/error-handling/useErrorHandler';
+import { ClientErrorCode } from 'modules/error-handling/client-code';
+import { useNotify } from 'modules/shared/hooks/useNotify.hook';
 
 export function useMutateCreateUser() {
   const dispatch = useDispatch();

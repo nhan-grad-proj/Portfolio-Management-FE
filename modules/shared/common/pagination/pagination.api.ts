@@ -1,4 +1,4 @@
-import { Action } from '@/modules/shared/clients';
+import { Action } from 'modules/shared/clients';
 
 export type PaginationState = {
   page: number;

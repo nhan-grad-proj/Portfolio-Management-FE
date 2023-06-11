@@ -15,10 +15,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectMemberType,
   selectJoinedInDates
-} from '@/modules/user/store/user.selector';
-import { userActions } from '@/modules/user/store/user.slice';
-import { DatePicker } from '@/modules/shared/components/Input/DatePicker/DatePicker';
-import { MemberType } from '@/modules/user/constants/admin-management.constants';
+} from 'modules/user/store/user.selector';
+import { userActions } from 'modules/user/store/user.slice';
+import { DatePicker } from 'modules/shared/components/Input/DatePicker/DatePicker';
+import { MemberType } from 'modules/user/constants/admin-management.constants';
 import styles from './FilterDialog.module.scss';
 
 type FilterItem = {

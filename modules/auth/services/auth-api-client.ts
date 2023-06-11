@@ -1,8 +1,8 @@
-import { ApiClient } from '@/modules/shared/services';
+import { ApiClient } from 'modules/shared/services';
 import {
   BrowserStorage,
   registerBrowserStorage
-} from '@/modules/shared/services';
+} from 'modules/shared/services';
 
 export interface LoginRequest {
   username: string;

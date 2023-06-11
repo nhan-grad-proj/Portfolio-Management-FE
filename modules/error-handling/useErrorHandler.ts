@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios';
 import { useRouter } from 'next/router';
 import { ClientErrorCode, ErrorMessageManager } from './client-code';
-import { useNotify } from '@/modules/shared/hooks/useNotify.hook';
+import { useNotify } from 'modules/shared/hooks/useNotify.hook';
 
 export interface AppError {
   clientCode: string;

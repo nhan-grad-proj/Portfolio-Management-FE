@@ -4,9 +4,9 @@ import axios, {
   AxiosRequestConfig,
   AxiosResponse
 } from 'axios';
-import { TokenManager } from '@/modules/shared/services/token-manager';
-import { ClientErrorCode } from '@/modules/error-handling/client-code';
-import { ClientError } from '@/modules/error-handling/useErrorHandler';
+import { TokenManager } from 'modules/shared/services/token-manager';
+import { ClientErrorCode } from 'modules/error-handling/client-code';
+import { ClientError } from 'modules/error-handling/useErrorHandler';
 import { BrowserStorage } from './browser-storage';
 
 const API_URL = process.env.NEXT_PUBLIC_API_ENDPOINT ?? 'http://localhost:8080';

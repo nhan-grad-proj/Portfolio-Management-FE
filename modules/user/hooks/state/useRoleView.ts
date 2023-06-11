@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useQueryUserRoles } from '@/modules/user/hooks/data/useQueryUserRoles';
-import { useMutateSaveUserRoles } from '@/modules/user/hooks/data/useMutateSaveUserRoles';
-import { useQueryControlList } from '@/modules/user/hooks/data/useQueryControlList';
-import { useNotify } from '@/modules/shared/hooks/useNotify.hook';
+import { useQueryUserRoles } from 'modules/user/hooks/data/useQueryUserRoles';
+import { useMutateSaveUserRoles } from 'modules/user/hooks/data/useMutateSaveUserRoles';
+import { useQueryControlList } from 'modules/user/hooks/data/useQueryControlList';
+import { useNotify } from 'modules/shared/hooks/useNotify.hook';
 
 type RoleView = {
   name: string;

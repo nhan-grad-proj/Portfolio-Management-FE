@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex } from '@chakra-ui/react';
 import { HeaderActions } from './HeaderActions';
-import { ContentHeader } from '@/modules/shared/components/Header/ContentHeader/ContentHeader';
+import { ContentHeader } from 'modules/shared/components/Header/ContentHeader/ContentHeader';
 
 export function TableHeaderContainer(): React.ReactElement {
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CellProps } from 'react-table';
-import { UserManagementView } from '@/modules/user/models/user.type';
+import { UserManagementView } from 'modules/user/models/user.type';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCheck,
@@ -16,10 +16,10 @@ import {
   useDisclosure
 } from '@chakra-ui/react';
 import classNames from 'classnames';
-import { useMutateUpdatePaidMoney } from '@/modules/user/hooks/data/useMutateUpdatePaidMoney';
-import { OperationFee } from '@/modules/monthly-money/types';
+import { useMutateUpdatePaidMoney } from 'modules/user/hooks/data/useMutateUpdatePaidMoney';
+import { OperationFee } from 'modules/monthly-money/types';
 import classes from './Cell.module.scss';
-import { useNotify } from '@/modules/shared/hooks/useNotify.hook';
+import { useNotify } from 'modules/shared/hooks/useNotify.hook';
 
 export function PaidCell({
   row

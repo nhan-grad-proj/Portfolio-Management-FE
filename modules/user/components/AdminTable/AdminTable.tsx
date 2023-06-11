@@ -9,10 +9,10 @@ import {
   Thead,
   Tr
 } from '@chakra-ui/react';
-import { useAdminColumns } from '@/modules/user/hooks/table/useAdminColumns';
+import { useAdminColumns } from 'modules/user/hooks/table/useAdminColumns';
 import { useTable } from 'react-table';
-import { UserManagementView } from '@/modules/user/models/user.type';
-import { Page } from '@/modules/shared/clients';
+import { UserManagementView } from 'modules/user/models/user.type';
+import { Page } from 'modules/shared/clients';
 
 type Props = {
   data: Page<UserManagementView> | undefined;

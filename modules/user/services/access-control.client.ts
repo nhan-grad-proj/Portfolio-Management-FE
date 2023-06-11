@@ -1,5 +1,5 @@
-import { ApiClient } from '@/modules/shared/services';
-import { ControlList, UpdateRoleDto } from '@/modules/user/models/rbac.types';
+import { ApiClient } from 'modules/shared/services';
+import { ControlList, UpdateRoleDto } from 'modules/user/models/rbac.types';
 
 export const AccessControlApiClient = {
   get(): Promise<ControlList> {

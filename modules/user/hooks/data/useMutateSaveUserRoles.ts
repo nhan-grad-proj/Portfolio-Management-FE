@@ -1,5 +1,5 @@
 import { useMutation } from 'react-query';
-import { UserApiClient } from '@/modules/user/services/user-api-client';
+import { UserApiClient } from 'modules/user/services/user-api-client';
 
 export function useMutateSaveUserRoles() {
   const { mutate, isLoading } = useMutation({

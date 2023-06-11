@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { CellProps } from 'react-table';
-import { UserManagementView } from '@/modules/user/models/user.type';
-import { Role } from '@/modules/user/models/rbac.types';
+import { UserManagementView } from 'modules/user/models/user.type';
+import { Role } from 'modules/user/models/rbac.types';
 
 export function RoleCell({
   value

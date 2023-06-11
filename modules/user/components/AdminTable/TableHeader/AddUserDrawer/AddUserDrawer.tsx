@@ -14,13 +14,13 @@ import {
   Input,
   Select
 } from '@chakra-ui/react';
-import { CreateUserType } from '@/modules/user/constants/admin-management.constants';
-import { UseDisclosureApi } from '@/modules/shared/clients/disclosure.api';
+import { CreateUserType } from 'modules/user/constants/admin-management.constants';
+import { UseDisclosureApi } from 'modules/shared/clients/disclosure.api';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { mixed, object, string } from 'yup';
-import { MonthlyMoneyConfig } from '@/modules/monthly-money/clients/monthly-money.types';
-import { FullLoader } from '@/modules/shared/components/Loader/Full/FullLoader';
+import { MonthlyMoneyConfig } from 'modules/monthly-money/clients/monthly-money.types';
+import { FullLoader } from 'modules/shared/components/Loader/Full/FullLoader';
 import { read } from 'xlsx';
 
 export type CreateUserInputs = {

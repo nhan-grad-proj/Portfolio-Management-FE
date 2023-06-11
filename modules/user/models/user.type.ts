@@ -1,6 +1,6 @@
-import { CreateUserType } from '@/modules/user/constants/admin-management.constants';
-import { OperationFee } from '@/modules/monthly-money/types';
-import { Role } from '@/modules/user/models/rbac.types';
+import { CreateUserType } from 'modules/user/constants/admin-management.constants';
+import { OperationFee } from 'modules/monthly-money/types';
+import { Role } from 'modules/user/models/rbac.types';
 
 export type User = {
   id: string;

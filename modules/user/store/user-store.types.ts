@@ -2,8 +2,8 @@ import {
   CombineSearchFilter,
   Filter,
   FilterKey
-} from '@/modules/shared/common/filter';
-import { Pagination } from '@/modules/shared/clients';
+} from 'modules/shared/common/filter';
+import { Pagination } from 'modules/shared/clients';
 
 export type AdminFilter = CombineSearchFilter<{
   joinedIn: Filter<FilterKey.RANGE>;

@@ -1,4 +1,4 @@
-import { ExtractNewEmailsDto } from '@/modules/user/models/user.type';
+import { ExtractNewEmailsDto } from 'modules/user/models/user.type';
 import { useQuery } from 'react-query';
 import { UserApiClient } from '../../services/user-api-client';
 
