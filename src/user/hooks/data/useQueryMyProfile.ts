@@ -5,6 +5,8 @@ export function useQueryMyProfile({ enabled = true }) {
   return useQuery({
     queryKey: 'QUERY_MY_PROFILE',
     queryFn: UserApiClient.getMyProfile,
-    enabled
+    enabled,
+    cacheTime: Infinity,
+    staleTime: Infinity
   });
 }

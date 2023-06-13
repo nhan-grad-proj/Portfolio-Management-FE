@@ -1,10 +1,10 @@
 import '../styles/globals.scss';
 import '../styles/typography.module.scss';
 import { UserProvider } from 'src/user/contexts/UserContext/user.provider';
-import { AdminLayout } from 'src/shared/layouts/AdminLayout/AdminLayout';
 import { useHandleError } from 'src/system/app/internal/useHandleError';
 import { SystemProvider } from 'src/system/infrastructure/providers/system.provider';
 import { AppPropsWithLayout } from 'src/system/infrastructure/next.types';
+import { AdminLayout } from 'src/system/app/internal/containers/AdminLayout/AdminLayout';
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const handleError = useHandleError();
