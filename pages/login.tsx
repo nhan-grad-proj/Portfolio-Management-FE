@@ -2,12 +2,12 @@ import React from 'react';
 import Head from 'next/head';
 import { Container, Grid, GridItem, Image } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { LoginForm } from 'modules/auth/components/Form/LoginForm/LoginForm';
-import { FullLoader } from 'modules/shared/components/Loader/Full/FullLoader';
-import { useLoginMutation } from 'modules/auth/hooks/useLoginMutation';
-import { NoLayout } from 'modules/shared/components/NoLayout';
-import { UserIdentity } from 'modules/auth/services/user-identity';
-import { NextPageWithLayout } from 'modules/system/infrastructure/next.types';
+import { LoginForm } from 'src/auth/components/Form/LoginForm/LoginForm';
+import { FullLoader } from 'src/shared/components/Loader/Full/FullLoader';
+import { useLoginMutation } from 'src/auth/hooks/useLoginMutation';
+import { NoLayout } from 'src/shared/components/NoLayout';
+import { UserIdentity } from 'src/auth/services/user-identity';
+import { NextPageWithLayout } from 'src/system/infrastructure/next.types';
 
 const LoginPage: NextPageWithLayout = () => {
   const { isLoading, mutate: doLogin } = useLoginMutation();
