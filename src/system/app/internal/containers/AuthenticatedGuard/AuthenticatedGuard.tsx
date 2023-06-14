@@ -1,6 +1,6 @@
 import { PropsWithChildren, useEffect, ReactElement } from 'react';
 import { useRouter } from 'next/router';
-import { useUserSession } from '../../useUser';
+import { useUserSession } from '../../useUserSession';
 
 type AuthenticatedGuardProps = PropsWithChildren<{
   fallbackRoute: string;

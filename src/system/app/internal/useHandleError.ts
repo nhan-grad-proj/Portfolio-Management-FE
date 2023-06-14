@@ -3,7 +3,7 @@ import {
   ErrorDeps
 } from 'src/system/domain/usecases/error.usecase';
 import { useCallback } from 'react';
-import { useNotify } from 'src/shared/hooks/useNotify.hook';
+import { useNotify } from './useNotify';
 
 export const useHandleError: ErrorUseCase = (deps?: ErrorDeps) => {
   const showToast = useNotify();

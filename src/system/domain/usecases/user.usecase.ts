@@ -1,6 +1,6 @@
-import { User } from '../../../user/models/user.type';
+import { User } from '../entities/user.types';
 
-export type UserSession = () => {
-  data?: User;
+export type UserSession = {
+  user?: User;
   sessionStatus: 'authenticated' | 'unauthenticated' | 'verifying';
 };

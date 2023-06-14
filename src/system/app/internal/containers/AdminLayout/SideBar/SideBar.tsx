@@ -10,13 +10,9 @@ import {
   Text
 } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useRouter } from 'next/router';
-import isEmpty from 'lodash/isEmpty';
 import classNames from 'classnames';
 import styles from './SideBar.module.scss';
-import { SidebarMenuItem } from '../../clients/sidebar-menu.types';
-import { useQueryMenu } from '../../hooks/useQueryMenu.hook';
-import { convertToSidebarMenu } from '../../converters/convertToSidebarMenu';
+import { useMenu } from '../../../useMenu';
 
 type Props = Omit<
   React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
@@ -31,22 +27,7 @@ export function SideBar({
   isHovering,
   ...rest
 }: Props): React.ReactElement {
-  const { push } = useRouter();
-  const { menus } = useQueryMenu();
-
-  const sidebarMenuItems = React.useMemo(
-    () => convertToSidebarMenu(menus),
-    [menus]
-  );
-
-  const handleNavigate = React.useCallback(
-    (item: SidebarMenuItem) => {
-      if (item.accessLink && isEmpty(item.subMenus)) {
-        push(item.accessLink);
-      }
-    },
-    [push]
-  );
+  const { items, navigate } = useMenu();
 
   return (
     <aside
@@ -67,7 +48,9 @@ export function SideBar({
 
       <Box display={{ base: 'none', md: 'block' }}>
         <Accordion allowToggle>
-          {sidebarMenuItems?.map(item => {
+          {items?.map(item => {
+            const { subMenus } = item;
+
             return (
               <AccordionItem borderY="none" key={item.id}>
                 {({ isExpanded }) => (
@@ -77,7 +60,7 @@ export function SideBar({
                       paddingX="1rem"
                       marginBottom="0.375rem"
                       className={`${isExpanded ? styles['active-menu'] : ''}`}
-                      onClick={() => handleNavigate(item)}
+                      onClick={() => navigate(item)}
                     >
                       {!!item?.icon && (
                         <Box
@@ -110,10 +93,10 @@ export function SideBar({
                       </Text>
                     </AccordionButton>
 
-                    {!!item.subMenus && item.subMenus.length > 0 && (
+                    {subMenus.length > 0 && (
                       <AccordionPanel p={0}>
                         <List>
-                          {item.subMenus.map(subMenuItem => {
+                          {subMenus.map(subMenuItem => {
                             return (
                               <ListItem
                                 key={subMenuItem.id}
@@ -121,7 +104,7 @@ export function SideBar({
                                 paddingLeft={4}
                                 fontWeight="light"
                                 cursor="pointer"
-                                onClick={() => handleNavigate(subMenuItem)}
+                                onClick={() => navigate(subMenuItem)}
                               >
                                 {subMenuItem.name}
                               </ListItem>
