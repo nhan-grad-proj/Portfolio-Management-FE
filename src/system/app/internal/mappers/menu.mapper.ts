@@ -1,6 +1,6 @@
 import { faCake, faHome } from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { MenuItem, SidebarMenu } from '../../domain/entities/menu.types';
+import { MenuItem, SidebarMenu } from '../../../domain/entities/menu.types';
 
 const IconKeyByCode: Record<string, IconDefinition> = {
   USER_MANAGEMENT_ICON: faCake,

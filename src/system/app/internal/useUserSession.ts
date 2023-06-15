@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { UserSession } from '../../domain/usecases/user.usecase';
 import { useQueryMyProfile } from './useQueryMyProfile';
-import { useDispatch } from 'react-redux';
 import { systemActions } from './system.store';
 
 export function useUserSession(): UserSession {
@@ -21,10 +21,10 @@ export function useUserSession(): UserSession {
   }
 
   useEffect(
-    function setUserSession() {
-      if (status === 'success' && profile) {
-        dispatch(systemActions.setUser(profile));
-      }
+    function syncUserSession() {
+      if (status !== 'success' || !profile) return;
+
+      dispatch(systemActions.setUser(profile));
     },
     [dispatch, profile, status]
   );

@@ -6,7 +6,7 @@ import { useCallback } from 'react';
 import { useNotify } from './useNotify';
 
 export const useHandleError: ErrorUseCase = (deps?: ErrorDeps) => {
-  const showToast = useNotify();
+  const notify = useNotify();
 
   return useCallback(
     (error: unknown) => {
@@ -14,12 +14,12 @@ export const useHandleError: ErrorUseCase = (deps?: ErrorDeps) => {
         return;
       }
 
-      showToast({
+      notify({
         title: 'Error',
         status: 'error',
         description: error as string
       });
     },
-    [showToast]
+    [notify]
   );
 };

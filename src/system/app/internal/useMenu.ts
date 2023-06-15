@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useCallback, useMemo } from 'react';
 import { SidebarMenuItem } from '../../domain/entities/menu.types';
 import { useQueryMenu } from './useQueryMenu';
-import { toSidebarMenu } from './menu.mapper';
+import { toSidebarMenu } from './mappers/menu.mapper';
 
 export function useMenu() {
   const { push } = useRouter();
@@ -12,9 +12,7 @@ export function useMenu() {
 
   const navigate = useCallback(
     (item: SidebarMenuItem) => {
-      if (!item.accessLink || !item.subMenus.length) {
-        return;
-      }
+      if (!item.accessLink || !item.subMenus.length) return;
 
       push(item.accessLink);
     },
