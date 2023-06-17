@@ -1,12 +1,19 @@
 import * as React from 'react';
 import type { NextPage } from 'next';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const Home: NextPage = () => {
-  return (
-    <div>
-      <div>This is dashboard</div>
-    </div>
+  const { push } = useRouter();
+
+  useEffect(
+    function goToDefaultPage() {
+      push('/dashboard');
+    },
+    [push]
   );
+
+  return <></>;
 };
 
 export default Home;

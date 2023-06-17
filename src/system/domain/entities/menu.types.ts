@@ -8,12 +8,10 @@ export type MenuItem = {
   subMenus?: MenuItem[];
 };
 
-export type SidebarMenu = SidebarMenuItem[];
-
-export type SidebarMenuItem = {
+export type HeaderMenuItem = {
   id: string;
   name: string;
   accessLink?: string;
   icon: IconDefinition | undefined;
-  subMenus: SidebarMenuItem[];
+  subMenus: HeaderMenuItem[];
 };

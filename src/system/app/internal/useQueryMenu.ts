@@ -5,7 +5,28 @@ export function useQueryMenu() {
   const { data } = useQuery({
     queryKey: 'MENU',
     queryFn: () => {
-      return [] as MenuItem[];
+      return [
+        {
+          id: 'dashboard.',
+          name: 'Dashboard',
+          accessLink: '/dashboard'
+        },
+        {
+          id: 'analytics.',
+          name: 'Analytics',
+          accessLink: '/analytics'
+        },
+        {
+          id: 'portfolio.',
+          name: 'Portfolio',
+          accessLink: '/portfolio'
+        },
+        {
+          id: 'tools.',
+          name: 'Tools',
+          accessLink: '/tools'
+        }
+      ] as MenuItem[];
     }
   });
 
