@@ -6,9 +6,9 @@ const axios = require('axios').create({
   url: process.env.NEXT_PUBLIC_API_ENDPOINT ?? 'http://localhost:8080'
 });
 
-export const httpClientAdapter = new HttpClientAdapter(axios);
+export const httpClient = new HttpClientAdapter(axios);
 
 export const authorizedHttpClient = new AuthorizedHttpClientAdapter(
-  httpClientAdapter,
+  httpClient,
   persistentStorage
 );

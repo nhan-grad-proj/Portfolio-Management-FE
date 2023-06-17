@@ -12,3 +12,13 @@ export type AuthUseCase = {
     credentials: LoginCredentials
   ) => Promise<UserCredentials>;
 };
+
+type LoginProps = {
+  onSuccess?: (credentials: UserCredentials) => void;
+  onError?: () => void;
+};
+type LoginState = {
+  login: (payload: LoginCredentials) => void;
+  isMutating: boolean;
+};
+export type LoginUseCase = (props: LoginProps) => LoginState;

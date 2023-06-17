@@ -4,6 +4,7 @@ import { Container, Grid, GridItem, Image } from '@chakra-ui/react';
 import { NextPageWithLayout } from 'src/system/infrastructure/next.types';
 import { FullLoader } from 'src/system/app/internal/ui/Loader/Full/FullLoader';
 import { NoLayout } from 'src/system/app/internal/ui/NoLayout/NoLayout';
+import { LoginForm } from '../src/system/app/internal/containers/LoginForm/LoginForm';
 
 const LoginPage: NextPageWithLayout = () => {
   return (
@@ -16,7 +17,9 @@ const LoginPage: NextPageWithLayout = () => {
 
       <Container maxW="container.xl">
         <Grid templateColumns="repeat(2, 1fr)" height="100vh">
-          <GridItem>Login Form</GridItem>
+          <GridItem>
+            <LoginForm />
+          </GridItem>
 
           <GridItem>
             <div>

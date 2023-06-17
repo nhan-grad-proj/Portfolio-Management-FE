@@ -8,6 +8,10 @@ export type HttpRequest = {
 export type HttpResponse<T = any> = T;
 
 export class HttpError extends Error {
+  static isHttpError(error: unknown): error is HttpError {
+    return error instanceof HttpError;
+  }
+
   constructor(message: string, public code: string) {
     super(message);
   }
