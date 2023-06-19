@@ -8,5 +8,8 @@ export const persistentStorage: PersistentStorage = {
   },
   setAccessToken(accessToken: string): void {
     window.localStorage.setItem(AUTHENTICATION_KEY, accessToken);
+  },
+  cleanStorage(): void {
+    window.localStorage.removeItem(AUTHENTICATION_KEY);
   }
 };

@@ -1,23 +1,29 @@
 import { ReactElement } from 'react';
 import {
-  HStack,
   Avatar,
-  Flex,
+  Box,
   Button,
+  Flex,
+  HStack,
   Menu,
   MenuButton,
-  MenuList,
-  MenuItemOption,
   MenuDivider,
-  Box
+  MenuItemOption,
+  MenuList
 } from '@chakra-ui/react';
 import { HeaderMenu } from './Menu/Menu';
 import { useMenu } from '../../../useMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons';
+import { useLogOut } from '../../../useLogOut';
+import { useSelector } from 'react-redux';
+import { userSessionSelector } from '../../../system.store';
 
 export function Header(): ReactElement {
+  const userSession = useSelector(userSessionSelector);
+
   const { items, activeItem, navigate } = useMenu();
+  const logOut = useLogOut();
 
   return (
     <Box bgColor="white" paddingY="2">
@@ -46,13 +52,27 @@ export function Header(): ReactElement {
             </MenuButton>
 
             <MenuList>
-              <MenuItemOption value="asc">Ascending</MenuItemOption>
-              <MenuItemOption value="asc">Ascending</MenuItemOption>
+              <MenuItemOption value="short">
+                {userSession?.username}
+              </MenuItemOption>
 
               <MenuDivider />
 
-              <MenuItemOption value="asc">Ascending</MenuItemOption>
-              <MenuItemOption value="asc">Ascending</MenuItemOption>
+              <MenuItemOption value="my-account">My account</MenuItemOption>
+              <MenuItemOption value="my-subscription">
+                My subscription
+              </MenuItemOption>
+
+              <MenuDivider />
+
+              <MenuItemOption value="help">Help</MenuItemOption>
+              <MenuItemOption value="news">What's new</MenuItemOption>
+
+              <MenuDivider />
+
+              <MenuItemOption value="sign-out" onClick={logOut}>
+                Sign Out
+              </MenuItemOption>
             </MenuList>
           </Menu>
         </HStack>

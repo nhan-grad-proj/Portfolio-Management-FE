@@ -5,7 +5,10 @@ export function useQueryMyProfile() {
   const { data, status } = useQuery({
     queryKey: 'QUERY_MY_PROFILE',
     queryFn: () => {
-      return {} as User;
+      return {
+        id: '1',
+        username: 'Phu Dang Ngoc'
+      } as User;
     }
   });
 

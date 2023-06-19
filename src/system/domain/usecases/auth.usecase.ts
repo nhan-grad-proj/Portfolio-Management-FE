@@ -22,3 +22,6 @@ type LoginState = {
   isMutating: boolean;
 };
 export type LoginUseCase = (props: LoginProps) => LoginState;
+
+type LogOutState = () => void;
+export type LogOutUseCase = () => LogOutState;

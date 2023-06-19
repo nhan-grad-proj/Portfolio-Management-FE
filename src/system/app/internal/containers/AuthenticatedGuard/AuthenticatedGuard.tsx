@@ -1,15 +1,10 @@
-import { PropsWithChildren, useEffect, ReactElement } from 'react';
+import { PropsWithChildren, ReactElement, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useUserSession } from '../../useUserSession';
 
-type AuthenticatedGuardProps = PropsWithChildren<{
-  fallbackRoute: string;
-}>;
-
 export function AuthenticatedGuard({
-  fallbackRoute,
   children
-}: AuthenticatedGuardProps): ReactElement {
+}: PropsWithChildren): ReactElement {
   const { push } = useRouter();
   const { sessionStatus } = useUserSession();
 
@@ -19,9 +14,9 @@ export function AuthenticatedGuard({
         return;
       }
 
-      push(fallbackRoute);
+      push('/login');
     },
-    [fallbackRoute, push, sessionStatus]
+    [push, sessionStatus]
   );
 
   return <>{sessionStatus === 'authenticated' && children}</>;
