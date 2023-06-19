@@ -7,24 +7,14 @@ export function useQueryMenu() {
     queryFn: () => {
       return [
         {
-          id: 'dashboard.',
-          name: 'Dashboard',
-          accessLink: '/dashboard'
-        },
-        {
           id: 'analytics.',
           name: 'Analytics',
           accessLink: '/analytics'
         },
         {
-          id: 'portfolio.',
-          name: 'Portfolio',
-          accessLink: '/portfolio'
-        },
-        {
-          id: 'tools.',
-          name: 'Tools',
-          accessLink: '/tools'
+          id: 'transaction.',
+          name: 'Transaction',
+          accessLink: '/transaction'
         }
       ] as MenuItem[];
     }
