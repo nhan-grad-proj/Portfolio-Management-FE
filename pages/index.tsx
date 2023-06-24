@@ -8,7 +8,7 @@ const Home: NextPage = () => {
 
   useEffect(
     function goToDefaultPage() {
-      push('/dashboard');
+      push('/analytics');
     },
     [push]
   );

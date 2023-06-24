@@ -2,12 +2,15 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects';
 import { systemReducer } from '../../app/internal/system.store';
+import { analyticReducer } from '../../../analytics/app/internal/analytics.store';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
-  system: systemReducer
+  system: systemReducer,
+  analytic: analyticReducer
 });
+
 function* rootSaga() {
   yield all([]);
 }

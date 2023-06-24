@@ -1,11 +1,6 @@
-import { PropsWithChildren, ReactElement, ReactNode } from 'react';
-import { Card, Heading, Text } from '@chakra-ui/react';
-
-type OverviewCardProps = PropsWithChildren<{
-  title: ReactNode;
-  mainContent: ReactNode;
-  description: ReactNode;
-}>;
+import { ReactElement } from 'react';
+import { Card, CardBody, Heading, Text } from '@chakra-ui/react';
+import { OverviewCardProps } from './types';
 
 export function OverviewCard({
   title,
@@ -13,10 +8,12 @@ export function OverviewCard({
   description
 }: OverviewCardProps): ReactElement {
   return (
-    <Card paddingY="6" paddingX="8">
-      <Text fontSize="lg">{title}</Text>
-      <Heading fontSize="xl">{mainContent}</Heading>
-      <Text fontSize="md">{description}</Text>
+    <Card>
+      <CardBody>
+        <Text fontSize="lg">{title}</Text>
+        <Heading fontSize="xl">{mainContent}</Heading>
+        <Text fontSize="md">{description}</Text>
+      </CardBody>
     </Card>
   );
 }
