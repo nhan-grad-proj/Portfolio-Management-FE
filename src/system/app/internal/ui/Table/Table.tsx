@@ -67,7 +67,7 @@ export function Table<T extends object>({
         </Thead>
 
         <Tbody {...getTableBodyProps()}>
-          {rows.map((row, index) => {
+          {rows.map(row => {
             prepareRow(row);
 
             const { key: rowKey, ...rowProps } = row.getRowProps();

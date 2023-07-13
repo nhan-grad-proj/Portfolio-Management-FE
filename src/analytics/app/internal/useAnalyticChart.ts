@@ -1,7 +1,7 @@
 import { ChartData } from 'chart.js';
 import { useMemo } from 'react';
 
-export function useAnalyticChart(): ChartData<'doughnut', number[]> {
+export function useAnalyticChart(): ChartData<'doughnut', number[], string> {
   return useMemo(() => {
     return {
       labels: ['Red', 'Blue', 'Yellow'],
@@ -10,9 +10,9 @@ export function useAnalyticChart(): ChartData<'doughnut', number[]> {
           label: 'My First Dataset',
           data: [300, 50, 100],
           backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
+            'rgb(105, 48, 195)',
+            'rgb(42, 203, 203)',
+            'rgb(78, 168, 222)'
           ],
           hoverOffset: 4
         }

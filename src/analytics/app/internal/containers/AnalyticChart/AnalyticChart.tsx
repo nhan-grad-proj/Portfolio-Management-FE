@@ -1,26 +1,66 @@
-import { ReactElement } from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { ReactElement, useMemo } from 'react';
+import { ArcElement, Chart as ChartJS, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { Box, Heading, Card, Flex, CardBody } from '@chakra-ui/react';
+import {
+  Box,
+  Card,
+  CardBody,
+  Flex,
+  Heading,
+  Progress,
+  Grid,
+  GridItem
+} from '@chakra-ui/react';
 import { useAnalyticChart } from '../../useAnalyticChart';
+import { computeChartDescriptors } from '../../services/chart-computer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip);
 
 export function AnalyticChart(): ReactElement {
   const data = useAnalyticChart();
+  const descriptors = useMemo(() => computeChartDescriptors(data), [data]);
 
   return (
     <Card className="space-y-4">
       <CardBody>
         <Heading fontSize="xl">{'All holdings'}</Heading>
 
-        <Flex>
-          <Box height={350} width={'auto'} className="flex-1">
+        <Grid templateColumns="repeat(2, 1fr)" alignItems="center">
+          <GridItem height={350} width="auto">
             <Doughnut data={data} />
-          </Box>
+          </GridItem>
 
-          <Box className="flex-auto">USD</Box>
-        </Flex>
+          <GridItem>
+            {descriptors.map(({ label, percentage, color }) => {
+              return (
+                <Grid
+                  key={label}
+                  templateColumns="repeat(2, 1fr)"
+                  alignItems={'center'}
+                >
+                  <GridItem>
+                    <FontAwesomeIcon icon={faCircle} color={color} />
+                    <span className="ml-2">{label}</span>
+                  </GridItem>
+
+                  <GridItem>
+                    <Grid key={label} templateColumns="repeat(4, 1fr)">
+                      <GridItem colSpan={1}>
+                        <div>{percentage} %</div>
+                      </GridItem>
+
+                      <GridItem colSpan={3}>
+                        <Progress value={percentage} className="w-full" />
+                      </GridItem>
+                    </Grid>
+                  </GridItem>
+                </Grid>
+              );
+            })}
+          </GridItem>
+        </Grid>
       </CardBody>
     </Card>
   );

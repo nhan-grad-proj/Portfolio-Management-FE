@@ -11,8 +11,11 @@ module.exports = {
       'footer-height': '6rem'
     },
     colors: {
-      success: colors.green['500'],
-      primary: '#cb0c9f',
+      success: '#1bc5bd',
+      successLight: '#1bc5bd8a',
+      primary: '#3699ff',
+      primaryLight: '#3699ff8a',
+      info: '#8950fc',
       disable: colors.gray['500'],
       white: '#ffffff',
       black: '#000000'
