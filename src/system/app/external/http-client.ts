@@ -1,7 +1,8 @@
 export type HttpRequest = {
   url: string;
   method: 'post' | 'get' | 'put' | 'delete';
-  body?: any;
+  data?: any;
+  params?: any;
   headers?: any;
 };
 

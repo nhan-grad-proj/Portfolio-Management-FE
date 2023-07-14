@@ -27,10 +27,16 @@ export function useAnalyticOverviewItems(): AnalyticOverviewItemPropsAdapter {
         description: '-$639.47 0.43% daily'
       },
       {
-        key: 'IRR',
-        title: 'IRR',
-        mainContent: '10.43%',
-        description: '6.31%current holdings'
+        key: 'Best performer',
+        title: 'Best performer',
+        mainContent: '8.55%',
+        description: '6.04% current holdings'
+      },
+      {
+        key: 'Worst performer',
+        title: 'Worst performer',
+        mainContent: '5.09%',
+        description: '$6,181.00 annually'
       }
     ];
   }, [data]);

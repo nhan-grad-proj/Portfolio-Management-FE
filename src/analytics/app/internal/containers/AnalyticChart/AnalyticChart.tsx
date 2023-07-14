@@ -2,14 +2,12 @@ import { ReactElement, useMemo } from 'react';
 import { ArcElement, Chart as ChartJS, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import {
-  Box,
   Card,
   CardBody,
-  Flex,
-  Heading,
-  Progress,
   Grid,
-  GridItem
+  GridItem,
+  Heading,
+  Progress
 } from '@chakra-ui/react';
 import { useAnalyticChart } from '../../useAnalyticChart';
 import { computeChartDescriptors } from '../../services/chart-computer';
