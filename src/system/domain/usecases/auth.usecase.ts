@@ -1,10 +1,11 @@
 export type LoginCredentials = {
-  email: string;
+  username: string;
   password: string;
 };
 
 export type UserCredentials = {
-  accessToken: string;
+  access: string;
+  refresh: string;
 };
 
 export type AuthUseCase = {

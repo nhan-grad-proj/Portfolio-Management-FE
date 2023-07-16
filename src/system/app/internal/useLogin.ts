@@ -5,7 +5,7 @@ import { authClient } from './services/auth-client';
 export const useLogin: LoginUseCase = ({ onError, onSuccess }) => {
   const { mutate, isLoading } = useMutation({
     mutationFn: authClient.loginByCredentials,
-    mutationKey: 'POST_LOGIN',
+    mutationKey: 'loginByCredentials',
     onSuccess,
     onError
   });

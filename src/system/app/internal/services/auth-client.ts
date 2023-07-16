@@ -9,8 +9,8 @@ export const authClient: AuthUseCase = {
   loginByCredentials(credentials: LoginCredentials): Promise<UserCredentials> {
     return httpClient.request({
       method: 'post',
-      url: '/auth/login',
-      body: credentials
+      url: '/api/login/',
+      data: credentials
     });
   }
 };

@@ -23,10 +23,24 @@ import { useForm } from 'react-hook-form';
 import { AddTransactionModalModel } from '../../../app-models/transaction.model';
 import { useCreateTransactionMutation } from '../../../useCreateTransactionMutation';
 import { FullLoader } from '../../../../../../system/app/internal/ui/Loader/Full/FullLoader';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { object, string } from 'yup';
+
+const validateSchema = object().shape({
+  ticket: string(),
+  operation: string(),
+  date: string(),
+  amount: string(),
+  price: string(),
+  fee: string(),
+  note: string()
+});
 
 export function AddTransactionModal(): ReactElement {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { register, handleSubmit } = useForm<AddTransactionModalModel>();
+  const { register, handleSubmit } = useForm<AddTransactionModalModel>({
+    resolver: yupResolver(validateSchema)
+  });
 
   const { mutateCreateTransaction, isLoading } = useCreateTransactionMutation();
 

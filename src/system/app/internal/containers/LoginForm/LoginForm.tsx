@@ -12,6 +12,8 @@ import classes from './LoginForm.module.scss';
 import { LoginModel } from '../../app-models/auth.model';
 import { useLogin } from '../../useLogin';
 import { persistentStorage } from '../../services/persistent.storage';
+import { useNotify } from '../../useNotify';
+import { useRouter } from 'next/router';
 
 export function LoginForm(): ReactElement {
   const {
@@ -20,17 +22,26 @@ export function LoginForm(): ReactElement {
     formState: { errors },
     reset
   } = useForm<LoginModel>();
+  const { push } = useRouter();
+  const showNotify = useNotify();
 
   const { login } = useLogin({
     onSuccess: credentials => {
-      persistentStorage.setAccessToken(credentials.accessToken);
+      persistentStorage.setAccessToken(credentials.access);
+      push('/');
+    },
+    onError: () => {
+      showNotify({
+        title: 'Incorrect username or password',
+        status: 'error'
+      });
       reset();
     }
   });
 
   function submitResolver(model: LoginModel) {
     const loginCredentials = {
-      email: model.username,
+      username: model.username,
       password: model.password
     };
 

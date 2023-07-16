@@ -5,15 +5,18 @@ import { NextPageWithLayout } from 'src/system/infrastructure/next.types';
 import { FullLoader } from 'src/system/app/internal/ui/Loader/Full/FullLoader';
 import { NoLayout } from 'src/system/app/internal/ui/NoLayout/NoLayout';
 import { LoginForm } from '../src/system/app/internal/containers/LoginForm/LoginForm';
+import { useIsMutating } from 'react-query';
 
 const LoginPage: NextPageWithLayout = () => {
+  const isLoading = useIsMutating('loginByCredentials') > 0;
+
   return (
     <>
       <Head>
         <title>Login page example</title>
       </Head>
 
-      <FullLoader isLoading={false} />
+      <FullLoader isLoading={isLoading} />
 
       <Container maxW="container.xl">
         <Grid templateColumns="repeat(2, 1fr)" height="100vh">

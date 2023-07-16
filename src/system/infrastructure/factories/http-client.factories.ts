@@ -3,7 +3,7 @@ import { AuthorizedHttpClientAdapter } from '../adapters/authorized-http-client.
 import { persistentStorage } from '../../app/internal/services/persistent.storage';
 
 const axios = require('axios').create({
-  url: process.env.NEXT_PUBLIC_API_ENDPOINT ?? 'http://localhost:8080'
+  baseURL: process.env.NEXT_PUBLIC_API_ENDPOINT ?? 'http://localhost:8080'
 });
 
 export const httpClient = new HttpClientAdapter(axios);
