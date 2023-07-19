@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { useDisclosure } from '@chakra-ui/hooks';
 import {
   Button,
@@ -19,15 +19,19 @@ import {
 } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { useForm } from 'react-hook-form';
+import { useController, useForm } from 'react-hook-form';
 import { AddTransactionModalModel } from '../../../app-models/transaction.model';
 import { useCreateTransactionMutation } from '../../../useCreateTransactionMutation';
 import { FullLoader } from '../../../../../../system/app/internal/ui/Loader/Full/FullLoader';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { object, string } from 'yup';
+import { Combobox } from '../../../../../../system/app/internal/ui/Combobox/Combobox';
+import { CreateTransactionPayload } from '../../../../../domain/transaction.usecase';
+import { useSearchAsset } from '../../../../../../assets/app/internal/useSearchAsset';
+import { BoxItem } from '../../../../../../system/domain/ui-models/combobox.model';
 
 const validateSchema = object().shape({
-  ticket: string(),
+  ticket: object(),
   operation: string(),
   date: string(),
   amount: string(),
@@ -38,17 +42,37 @@ const validateSchema = object().shape({
 
 export function AddTransactionModal(): ReactElement {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { register, handleSubmit } = useForm<AddTransactionModalModel>({
-    resolver: yupResolver(validateSchema)
+  const { register, control, handleSubmit } = useForm<AddTransactionModalModel>(
+    {
+      resolver: yupResolver(validateSchema)
+    }
+  );
+  const { field } = useController({
+    name: 'ticket',
+    control
   });
 
   const { mutateCreateTransaction, isLoading } = useCreateTransactionMutation();
 
+  const { assets } = useSearchAsset('BTC');
+  const ticketItems: BoxItem[] = useMemo(() => {
+    return assets.map(asset => ({
+      text: asset.type,
+      value: asset.symbol
+    }));
+  }, [assets]);
+
   function resolveSubmitResult(data: AddTransactionModalModel) {
-    mutateCreateTransaction(data, {
+    const payload: CreateTransactionPayload = {
+      ...data,
+      ticket: data.ticket.value
+    };
+
+    mutateCreateTransaction(payload, {
       onSuccess: onClose
     });
   }
+
   return (
     <>
       {isLoading && <FullLoader />}
@@ -71,10 +95,7 @@ export function AddTransactionModal(): ReactElement {
           <ModalBody className="space-y-4">
             <FormControl isRequired>
               <FormLabel>Ticker/Company</FormLabel>
-              <Input
-                placeholder="Start entering in the ticker or company name.."
-                {...register('ticket')}
-              />
+              <Combobox items={ticketItems} {...field} />
             </FormControl>
 
             <Grid templateColumns="repeat(2,1fr)" className="space-x-2">
