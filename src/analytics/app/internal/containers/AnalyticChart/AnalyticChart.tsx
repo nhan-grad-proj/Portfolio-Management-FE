@@ -7,7 +7,12 @@ import {
   Grid,
   GridItem,
   Heading,
-  Progress
+  Progress,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs
 } from '@chakra-ui/react';
 import { useAnalyticChart } from '../../useAnalyticChart';
 import { computeChartDescriptors } from '../../services/chart-computer';
@@ -21,45 +26,65 @@ export function AnalyticChart(): ReactElement {
   const descriptors = useMemo(() => computeChartDescriptors(data), [data]);
 
   return (
-    <Card className="space-y-4">
-      <CardBody>
-        <Heading fontSize="xl">{'All holdings'}</Heading>
+    <>
+      <Tabs variant="soft-rounded" className="space-y-4">
+        <TabList>
+          <Tab>Assets</Tab>
+          <Tab>Classes</Tab>
+        </TabList>
 
-        <Grid templateColumns="repeat(2, 1fr)" alignItems="center">
-          <GridItem height={350} width="auto">
-            <Doughnut data={data} />
-          </GridItem>
+        <TabPanels>
+          <TabPanel p={0}>
+            <Card>
+              <CardBody className="space-y-8">
+                <Heading fontSize="xl">{'All holdings'}</Heading>
 
-          <GridItem>
-            {descriptors.map(({ label, percentage, color }) => {
-              return (
-                <Grid
-                  key={label}
-                  templateColumns="repeat(2, 1fr)"
-                  alignItems={'center'}
-                >
-                  <GridItem>
-                    <FontAwesomeIcon icon={faCircle} color={color} />
-                    <span className="ml-2">{label}</span>
+                <Grid templateColumns="repeat(2, 1fr)" alignItems="center">
+                  <GridItem height={350} width="auto">
+                    <Doughnut data={data} />
                   </GridItem>
 
                   <GridItem>
-                    <Grid key={label} templateColumns="repeat(4, 1fr)">
-                      <GridItem colSpan={1}>
-                        <div>{percentage} %</div>
-                      </GridItem>
+                    {descriptors.map(({ label, percentage, color }) => {
+                      return (
+                        <Grid
+                          key={label}
+                          templateColumns="repeat(2, 1fr)"
+                          alignItems={'center'}
+                        >
+                          <GridItem>
+                            <FontAwesomeIcon icon={faCircle} color={color} />
+                            <span className="ml-2">{label}</span>
+                          </GridItem>
 
-                      <GridItem colSpan={3}>
-                        <Progress value={percentage} className="w-full" />
-                      </GridItem>
-                    </Grid>
+                          <GridItem>
+                            <Grid key={label} templateColumns="repeat(4, 1fr)">
+                              <GridItem colSpan={1}>
+                                <div>{percentage} %</div>
+                              </GridItem>
+
+                              <GridItem colSpan={3}>
+                                <Progress
+                                  value={percentage}
+                                  className="w-full"
+                                />
+                              </GridItem>
+                            </Grid>
+                          </GridItem>
+                        </Grid>
+                      );
+                    })}
                   </GridItem>
                 </Grid>
-              );
-            })}
-          </GridItem>
-        </Grid>
-      </CardBody>
-    </Card>
+              </CardBody>
+            </Card>
+          </TabPanel>
+
+          <TabPanel>
+            <p>two!</p>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </>
   );
 }

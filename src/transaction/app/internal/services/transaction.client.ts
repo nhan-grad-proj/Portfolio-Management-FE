@@ -14,14 +14,14 @@ export const transactionClient: TransactionUsecase = {
     return authorizedHttpClient.request({
       method: 'post',
       data: payload,
-      url: '/api/transactions/'
+      url: '/transactions/'
     });
   },
   createFee(payload: CreateFeePayload): Promise<void> {
     return authorizedHttpClient.request({
       method: 'post',
       data: payload,
-      url: '/api/fees'
+      url: '/fees'
     });
   }
 };

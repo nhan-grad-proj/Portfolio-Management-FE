@@ -8,7 +8,7 @@ import {
   Spacer
 } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { AddTransactionModal } from './AddTransactionModal/AddTransactionModal';
 import { AddFeeModal } from './AddFeeModal/AddFeeModal';
 

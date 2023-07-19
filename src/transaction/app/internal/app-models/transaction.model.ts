@@ -1,3 +1,5 @@
+import { BoxItem } from '../../../../system/domain/ui-models/combobox.model';
+
 export type TransactionColumn = {
   operation: string;
   holding: string;
@@ -14,7 +16,7 @@ export type AddFeeModalModel = {
 };
 
 export type AddTransactionModalModel = {
-  ticket: string;
+  ticket: BoxItem;
   operation: string;
   date: string;
   amount: string;
