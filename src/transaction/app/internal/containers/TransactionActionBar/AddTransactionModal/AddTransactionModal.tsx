@@ -31,7 +31,9 @@ import { useSearchAsset } from '../../../../../../assets/app/internal/useSearchA
 import { BoxItem } from '../../../../../../system/domain/ui-models/combobox.model';
 import { useDebounce } from '../../../../../../system/app/internal/useDebounce';
 import { EMPTY_BOX } from '../../../../../../system/domain/constants';
-import { TransactionType } from '../../../../../domain/constant';
+import { TransactionTypes } from '../../../../../domain/constant';
+import { useSelector } from 'react-redux';
+import { selectedPortfolioSelector } from '../../../../../../system/app/internal/system.store';
 
 const validateSchema = object().shape({
   ticket: object({
@@ -39,8 +41,8 @@ const validateSchema = object().shape({
     value: string().required()
   }),
   operation: string().oneOf(
-    Object.values(TransactionType),
-    `Values must be selected one of ${Object.values(TransactionType)}`
+    Object.values(TransactionTypes),
+    `Values must be selected one of ${Object.values(TransactionTypes)}`
   ),
   date: string().required('Please select date'),
   amount: string().required('Please input amount'),
@@ -52,6 +54,7 @@ const initValues: Partial<AddTransactionModalModel> = {
 };
 
 export function AddTransactionModal(): ReactElement {
+  const selectedPortfolio = useSelector(selectedPortfolioSelector);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     register,
@@ -79,13 +82,17 @@ export function AddTransactionModal(): ReactElement {
   }, [assets]);
 
   function resolveSubmitResult(data: AddTransactionModalModel) {
+    if (!selectedPortfolio?.id) {
+      throw new Error('Missing selected portfolio');
+    }
+
     const payload: CreateTransactionPayload = {
       asset: data.ticket.value,
-      portfolio_id: 1,
       transaction_type: data.operation,
       quantity: parseFloat(data.amount),
       price: parseFloat(data.price),
-      transaction_date: data.date
+      transaction_date: data.date,
+      portfolio_id: selectedPortfolio.id
     };
 
     mutateCreateTransaction(payload, {
@@ -134,9 +141,16 @@ export function AddTransactionModal(): ReactElement {
                     {...register('operation')}
                     placeholder="Select option"
                   >
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
+                    {Object.keys(TransactionTypes).map(key => {
+                      const value =
+                        TransactionTypes[key as keyof typeof TransactionTypes];
+
+                      return (
+                        <option key={key} value={value}>
+                          {value}
+                        </option>
+                      );
+                    })}
                   </Select>
 
                   {errors.operation && (

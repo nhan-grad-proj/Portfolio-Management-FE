@@ -1,4 +1,4 @@
-export enum TransactionType {
-  BUY = 'buy',
-  SELL = 'sell'
-}
+export const TransactionTypes = {
+  BUY: 'buy',
+  SELL: 'sell'
+};

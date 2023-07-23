@@ -7,14 +7,25 @@ export type HoldingModel = {
   IRR: string;
 };
 
+export interface Performer {
+  id: number;
+  ticker_symbol: string;
+  gained_amount_in_usd: number;
+  percentage: number;
+}
+
 export type InvestmentAnalysisResults = {
-  totalValue: string;
-  totalProfit: string;
-  lost: string;
-  IRR: string;
+  id: number;
+  total_invested: number;
+  total_value: number;
+  total_profit: number;
+  best_performer: Performer;
+  worst_performer: Performer;
 };
 
 export type AnalyticUseCase = {
   getHoldings: () => Promise<HoldingModel[]>;
-  getInvestmentAnalysisResults: () => Promise<InvestmentAnalysisResults>;
+  getInvestmentAnalysisResults: (
+    portfolioId: number
+  ) => Promise<InvestmentAnalysisResults>;
 };
