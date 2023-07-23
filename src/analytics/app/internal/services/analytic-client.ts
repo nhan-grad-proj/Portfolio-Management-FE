@@ -3,17 +3,18 @@ import {
   HoldingModel,
   InvestmentAnalysisResults
 } from '../../../domain/analytic.usecase';
+import { authorizedHttpClient } from '../../../../system/infrastructure/factories/http-client.factories';
 
 export const analyticClient: AnalyticUseCase = {
   getHoldings(): Promise<HoldingModel[]> {
     return Promise.resolve([]);
   },
-  getInvestmentAnalysisResults(): Promise<InvestmentAnalysisResults> {
-    return Promise.resolve({
-      totalValue: '0',
-      totalProfit: '0',
-      IRR: '0',
-      lost: '0'
+  getInvestmentAnalysisResults(
+    portfolioId: number
+  ): Promise<InvestmentAnalysisResults> {
+    return authorizedHttpClient.request({
+      method: 'get',
+      url: `/portfolios/${portfolioId}/dashboard`
     });
   }
 };

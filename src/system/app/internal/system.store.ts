@@ -9,6 +9,13 @@ const systemSlice = createSlice({
   reducers: {
     setUser(state, action: PayloadAction<User>) {
       state.userSession = action.payload;
+    },
+    set(state, action: PayloadAction<{ key: keyof SystemStore; data: any }>) {
+      const {
+        payload: { key, data }
+      } = action;
+
+      state[key] = data;
     }
   }
 });
@@ -19,3 +26,6 @@ export const systemActions = systemSlice.actions;
 
 export const userSessionSelector = (state: AppState) =>
   state.system.userSession;
+
+export const selectedPortfolioSelector = (state: AppState) =>
+  state.system.selectedPortfolio;
