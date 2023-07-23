@@ -18,7 +18,7 @@ import { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { AddPortfolioModalModel } from '../../app-models/portfolio.model';
 import { object, string } from 'yup';
 import { useCreatePortfolioMutation } from '../../useCreatePortfolioMutation';

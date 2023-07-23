@@ -11,5 +11,5 @@ export type UserProfile = {
 };
 
 export type UserUsecase = {
-  getMyProfile: () => UserProfile;
+  getMyProfile: () => Promise<UserProfile>;
 };

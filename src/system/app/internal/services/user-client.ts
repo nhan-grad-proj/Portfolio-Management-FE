@@ -5,7 +5,7 @@ import {
 import { authorizedHttpClient } from '../../../infrastructure/factories/http-client.factories';
 
 export const userClient: UserUsecase = {
-  getMyProfile(): UserProfile {
+  getMyProfile(): Promise<UserProfile> {
     return authorizedHttpClient.request({
       method: 'get',
       url: 'users/me/'
