@@ -5,13 +5,12 @@ export type CreateFeePayload = {
 };
 
 export type CreateTransactionPayload = {
-  ticket: string;
-  operation: string;
-  date: string;
-  amount: string;
-  price: string;
-  fee: string;
-  note: string;
+  asset: string;
+  portfolio_id: number;
+  transaction_type: string;
+  quantity: number;
+  price: number;
+  transaction_date: string;
 };
 
 export type Transaction = {

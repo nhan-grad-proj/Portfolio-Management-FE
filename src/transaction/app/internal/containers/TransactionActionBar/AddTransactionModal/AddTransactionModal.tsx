@@ -3,6 +3,7 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import {
   Button,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Grid,
   GridItem,
@@ -14,8 +15,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Select,
-  Textarea
+  Select
 } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -29,24 +29,39 @@ import { Combobox } from '../../../../../../system/app/internal/ui/Combobox/Comb
 import { CreateTransactionPayload } from '../../../../../domain/transaction.usecase';
 import { useSearchAsset } from '../../../../../../assets/app/internal/useSearchAsset';
 import { BoxItem } from '../../../../../../system/domain/ui-models/combobox.model';
+import { useDebounce } from '../../../../../../system/app/internal/useDebounce';
+import { EMPTY_BOX } from '../../../../../../system/domain/constants';
+import { TransactionType } from '../../../../../domain/constant';
 
 const validateSchema = object().shape({
-  ticket: object(),
-  operation: string(),
-  date: string(),
-  amount: string(),
-  price: string(),
-  fee: string(),
-  note: string()
+  ticket: object({
+    text: string().required(),
+    value: string().required()
+  }),
+  operation: string().oneOf(
+    Object.values(TransactionType),
+    `Values must be selected one of ${Object.values(TransactionType)}`
+  ),
+  date: string().required('Please select date'),
+  amount: string().required('Please input amount'),
+  price: string().required('Please input price')
 });
+
+const initValues: Partial<AddTransactionModalModel> = {
+  ticket: EMPTY_BOX
+};
 
 export function AddTransactionModal(): ReactElement {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { register, control, handleSubmit } = useForm<AddTransactionModalModel>(
-    {
-      resolver: yupResolver(validateSchema)
-    }
-  );
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<AddTransactionModalModel>({
+    resolver: yupResolver(validateSchema),
+    defaultValues: initValues
+  });
   const { field } = useController({
     name: 'ticket',
     control
@@ -54,18 +69,23 @@ export function AddTransactionModal(): ReactElement {
 
   const { mutateCreateTransaction, isLoading } = useCreateTransactionMutation();
 
-  const { assets } = useSearchAsset('BTC');
+  const debounced = useDebounce(field.value);
+  const { assets } = useSearchAsset(debounced.text);
   const ticketItems: BoxItem[] = useMemo(() => {
     return assets.map(asset => ({
-      text: asset.type,
+      text: asset.symbol,
       value: asset.symbol
     }));
   }, [assets]);
 
   function resolveSubmitResult(data: AddTransactionModalModel) {
     const payload: CreateTransactionPayload = {
-      ...data,
-      ticket: data.ticket.value
+      asset: data.ticket.value,
+      portfolio_id: 1,
+      transaction_type: data.operation,
+      quantity: parseFloat(data.amount),
+      price: parseFloat(data.price),
+      transaction_date: data.date
     };
 
     mutateCreateTransaction(payload, {
@@ -93,14 +113,22 @@ export function AddTransactionModal(): ReactElement {
           <ModalHeader>New transaction</ModalHeader>
           <ModalCloseButton />
           <ModalBody className="space-y-4">
-            <FormControl isRequired>
+            <FormControl isRequired isInvalid={!!errors.ticket}>
               <FormLabel>Ticker/Company</FormLabel>
-              <Combobox items={ticketItems} {...field} />
+              <Combobox
+                placeholder="Start entering in the ticket or company name ..."
+                items={ticketItems}
+                {...field}
+              />
+
+              {errors.ticket && (
+                <FormErrorMessage>{errors.ticket.message}</FormErrorMessage>
+              )}
             </FormControl>
 
             <Grid templateColumns="repeat(2,1fr)" className="space-x-2">
               <GridItem>
-                <FormControl isRequired>
+                <FormControl isRequired isInvalid={!!errors.operation}>
                   <FormLabel>Operation</FormLabel>
                   <Select
                     {...register('operation')}
@@ -110,42 +138,50 @@ export function AddTransactionModal(): ReactElement {
                     <option value="option2">Option 2</option>
                     <option value="option3">Option 3</option>
                   </Select>
+
+                  {errors.operation && (
+                    <FormErrorMessage>
+                      {errors.operation.message}
+                    </FormErrorMessage>
+                  )}
                 </FormControl>
               </GridItem>
 
               <GridItem>
-                <FormControl isRequired>
+                <FormControl isRequired isInvalid={!!errors.date}>
                   <FormLabel>Date</FormLabel>
                   <Input {...register('date')} type="date" />
+
+                  {errors.date && (
+                    <FormErrorMessage>{errors.date.message}</FormErrorMessage>
+                  )}
                 </FormControl>
               </GridItem>
             </Grid>
 
             <Grid templateColumns="repeat(2,1fr)" className="space-x-2">
               <GridItem>
-                <FormControl isRequired>
+                <FormControl isRequired isInvalid={!!errors.amount}>
                   <FormLabel>Amount</FormLabel>
                   <Input {...register('amount')} type="number" />
+
+                  {errors.amount && (
+                    <FormErrorMessage>{errors.amount.message}</FormErrorMessage>
+                  )}
                 </FormControl>
               </GridItem>
 
               <GridItem>
-                <FormControl isRequired>
+                <FormControl isRequired isInvalid={!!errors.price}>
                   <FormLabel>Price</FormLabel>
                   <Input {...register('price')} type="number" />
+
+                  {errors.price && (
+                    <FormErrorMessage>{errors.price.message}</FormErrorMessage>
+                  )}
                 </FormControl>
               </GridItem>
             </Grid>
-
-            <FormControl>
-              <FormLabel>Fee</FormLabel>
-              <Input {...register('fee')} type="number" />
-            </FormControl>
-
-            <FormControl>
-              <FormLabel>Note</FormLabel>
-              <Textarea {...register('note')} />
-            </FormControl>
           </ModalBody>
 
           <ModalFooter>
