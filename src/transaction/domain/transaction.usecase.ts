@@ -11,6 +11,7 @@ export type CreateTransactionPayload = {
   quantity: number;
   price: number;
   transaction_date: string;
+  fee: number;
 };
 
 export type Transaction = {

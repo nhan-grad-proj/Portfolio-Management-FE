@@ -46,7 +46,8 @@ const validateSchema = object().shape({
   ),
   date: string().required('Please select date'),
   amount: string().required('Please input amount'),
-  price: string().required('Please input price')
+  price: string().required('Please input price'),
+  fee: string().optional().required('Please input fee')
 });
 
 const initValues: Partial<AddTransactionModalModel> = {
@@ -91,6 +92,7 @@ export function AddTransactionModal(): ReactElement {
       transaction_type: data.operation,
       quantity: parseFloat(data.amount),
       price: parseFloat(data.price),
+      fee: parseFloat(data.fee),
       transaction_date: data.date,
       portfolio_id: selectedPortfolio.id
     };
@@ -196,6 +198,15 @@ export function AddTransactionModal(): ReactElement {
                 </FormControl>
               </GridItem>
             </Grid>
+
+            <FormControl isInvalid={!!errors.fee}>
+              <FormLabel>Price</FormLabel>
+              <Input {...register('fee')} type="number" />
+
+              {errors.fee && (
+                <FormErrorMessage>{errors.fee.message}</FormErrorMessage>
+              )}
+            </FormControl>
           </ModalBody>
 
           <ModalFooter>

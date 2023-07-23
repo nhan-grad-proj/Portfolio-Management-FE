@@ -20,6 +20,12 @@ export type WorstPerformer = {
   gained_amount_in_usd: number;
 };
 
+export type CreatePortfolioPayload = {
+  name: string;
+  description: string;
+};
+
 export type PortfolioUseCase = {
   getAll: () => Promise<Portfolio[]>;
+  createOne: (payload: CreatePortfolioPayload) => Promise<void>;
 };

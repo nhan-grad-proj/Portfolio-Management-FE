@@ -21,4 +21,5 @@ export type AddTransactionModalModel = {
   date: string;
   amount: string;
   price: string;
+  fee: string;
 };

@@ -16,9 +16,9 @@ import { HeaderMenu } from './Menu/Menu';
 import { useMenu } from '../../../useMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faUser,
+  faCaretDown,
   faSuitcase,
-  faCaretDown
+  faUser
 } from '@fortawesome/free-solid-svg-icons';
 import { useLogOut } from '../../../useLogOut';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,6 +29,7 @@ import {
 } from '../../../system.store';
 import { useQueryMyPortfolios } from '../../../../../../portfolio/app/internal/useQueryMyPortfolios';
 import { Portfolio } from '../../../../../../portfolio/domain/portfolio.usecase';
+import { AddPortfolioModal } from '../../../../../../portfolio/app/internal/containers/AddPortfolioModal/AddPortfolioModal';
 
 export function Header(): ReactElement {
   const dispatch = useDispatch();
@@ -106,6 +107,10 @@ export function Header(): ReactElement {
                   </MenuItem>
                 );
               })}
+
+              <MenuItem>
+                <AddPortfolioModal />
+              </MenuItem>
             </MenuList>
           </Menu>
 
@@ -114,7 +119,7 @@ export function Header(): ReactElement {
               <FontAwesomeIcon icon={faUser} />
             </MenuButton>
 
-            <MenuList>
+            <MenuList zIndex={99}>
               <MenuItemOption value="short">
                 {userSession?.username}
               </MenuItemOption>
