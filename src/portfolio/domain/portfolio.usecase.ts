@@ -1,3 +1,5 @@
+import { AssetOverview } from '../../assets/domain/assets.usecase';
+
 export type Portfolio = {
   id: number;
   name: string;
@@ -25,7 +27,12 @@ export type CreatePortfolioPayload = {
   description: string;
 };
 
+export type PortfolioDetail = Portfolio & {
+  assets: AssetOverview[];
+};
+
 export type PortfolioUseCase = {
   getAll: () => Promise<Portfolio[]>;
+  getDetail: (portfolioId: number) => Promise<PortfolioDetail>;
   createOne: (payload: CreatePortfolioPayload) => Promise<void>;
 };

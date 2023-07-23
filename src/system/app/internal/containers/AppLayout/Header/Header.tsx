@@ -1,69 +1,31 @@
-import { ReactElement, useEffect } from 'react';
+import { ReactElement } from 'react';
 import {
   Avatar,
   Box,
-  Button,
   Flex,
   HStack,
   Menu,
   MenuButton,
   MenuDivider,
-  MenuItem,
   MenuItemOption,
   MenuList
 } from '@chakra-ui/react';
 import { HeaderMenu } from './Menu/Menu';
 import { useMenu } from '../../../useMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCaretDown,
-  faSuitcase,
-  faUser
-} from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { useLogOut } from '../../../useLogOut';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectedPortfolioSelector,
-  systemActions,
-  userSessionSelector
-} from '../../../system.store';
+import { useSelector } from 'react-redux';
+import { userSessionSelector } from '../../../system.store';
 import { useQueryMyPortfolios } from '../../../../../../portfolio/app/internal/useQueryMyPortfolios';
-import { Portfolio } from '../../../../../../portfolio/domain/portfolio.usecase';
-import { AddPortfolioModal } from '../../../../../../portfolio/app/internal/containers/AddPortfolioModal/AddPortfolioModal';
+import { PortfolioMenu } from './Menu/PortfolioMenu';
 
 export function Header(): ReactElement {
-  const dispatch = useDispatch();
   const userSession = useSelector(userSessionSelector);
-  const selectedPortfolio = useSelector(selectedPortfolioSelector);
 
   const { items, activeItem, navigate } = useMenu();
-  const { portfolios, isSuccess } = useQueryMyPortfolios();
+  const { portfolios } = useQueryMyPortfolios();
   const logOut = useLogOut();
-
-  function handleSelectPortfolio(portfolio: Portfolio) {
-    return () => {
-      dispatch(
-        systemActions.set({
-          key: 'selectedPortfolio',
-          data: portfolio
-        })
-      );
-    };
-  }
-
-  useEffect(
-    function selectFirstPortfolio() {
-      if (!isSuccess || selectedPortfolio || !portfolios.length) return;
-
-      dispatch(
-        systemActions.set({
-          key: 'selectedPortfolio',
-          data: portfolios[0]
-        })
-      );
-    },
-    [dispatch, isSuccess, portfolios, selectedPortfolio]
-  );
 
   return (
     <Box bgColor="white" paddingY="2">
@@ -83,36 +45,7 @@ export function Header(): ReactElement {
         </HStack>
 
         <HStack>
-          <Menu>
-            <MenuButton as={Button}>
-              <FontAwesomeIcon icon={faSuitcase} />
-              <span className="mx-2">Portfolio</span>
-              <FontAwesomeIcon icon={faCaretDown} />
-            </MenuButton>
-
-            <MenuList>
-              {portfolios.map(portfolio => {
-                return (
-                  <MenuItem
-                    key={portfolio.id}
-                    onClick={handleSelectPortfolio(portfolio)}
-                    color={
-                      selectedPortfolio?.name === portfolio.name
-                        ? 'blue'
-                        : 'current'
-                    }
-                  >
-                    <FontAwesomeIcon icon={faSuitcase} />
-                    <span className="ml-2">{portfolio.name}</span>
-                  </MenuItem>
-                );
-              })}
-
-              <MenuItem>
-                <AddPortfolioModal />
-              </MenuItem>
-            </MenuList>
-          </Menu>
+          <PortfolioMenu items={portfolios} />
 
           <Menu>
             <MenuButton>

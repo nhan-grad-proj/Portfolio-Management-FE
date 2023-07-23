@@ -1,12 +1,18 @@
-import { useQueryAssetOverview } from '../../../assets/app/internal/useQueryAssetOverview';
 import { useMemo } from 'react';
 import { AnalyticColumn } from './app-models/analytic.model';
+import { useQueryPortfolioDetail } from '../../../portfolio/app/internal/useQueryPortfolioDetail';
+import { useSelector } from 'react-redux';
+import { selectedPortfolioId } from '../../../system/app/internal/system.store';
+import { EMPTY_ARRAY } from '../../../system/domain/constants';
 
 export function useAssetOverviewItems(): AnalyticColumn[] {
-  const { assetOverviewItems } = useQueryAssetOverview();
+  const portfolioId = useSelector(selectedPortfolioId);
+  const { portfolio } = useQueryPortfolioDetail(portfolioId ?? NaN);
 
   return useMemo(() => {
-    return assetOverviewItems.map(item => {
+    if (!portfolio) return EMPTY_ARRAY;
+
+    return portfolio.assets.map(item => {
       return {
         id: item.id,
         currentPrice: item.current_price,
@@ -19,5 +25,5 @@ export function useAssetOverviewItems(): AnalyticColumn[] {
         tickerSymbol: item.ticker_symbol
       };
     });
-  }, [assetOverviewItems]);
+  }, [portfolio]);
 }

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit';
 import { User } from '../../domain/entities/user.types';
 import { SystemStore } from '../../domain/system-store.types';
 import { AppState } from '../../infrastructure/config/redux.config';
@@ -29,3 +29,8 @@ export const userSessionSelector = (state: AppState) =>
 
 export const selectedPortfolioSelector = (state: AppState) =>
   state.system.selectedPortfolio;
+
+export const selectedPortfolioId = createSelector(
+  selectedPortfolioSelector,
+  portfolio => portfolio?.id
+);
