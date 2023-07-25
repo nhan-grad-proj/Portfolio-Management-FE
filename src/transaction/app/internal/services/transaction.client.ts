@@ -8,7 +8,10 @@ import { authorizedHttpClient } from '../../../../system/infrastructure/factorie
 
 export const transactionClient: TransactionUsecase = {
   get(): Promise<Transaction[]> {
-    return Promise.resolve([]);
+    return authorizedHttpClient.request({
+      method: 'get',
+      url: '/transactions/'
+    });
   },
   createTransaction(payload: CreateTransactionPayload): Promise<void> {
     return authorizedHttpClient.request({

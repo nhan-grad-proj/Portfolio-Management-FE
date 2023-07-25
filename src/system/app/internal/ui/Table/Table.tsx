@@ -56,7 +56,13 @@ export function Table<T extends object>({
                     column.getHeaderProps();
 
                   return (
-                    <Th key={headerGroupKey} {...colProps} color="grey">
+                    <Th
+                      key={headerGroupKey}
+                      {...colProps}
+                      color="grey"
+                      backgroundColor={'white'}
+                      className="shadow-md"
+                    >
                       {column.render('Header')}
                     </Th>
                   );

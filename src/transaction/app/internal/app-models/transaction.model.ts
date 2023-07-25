@@ -2,7 +2,6 @@ import { BoxItem } from '../../../../system/domain/ui-models/combobox.model';
 
 export type TransactionColumn = {
   operation: string;
-  holding: string;
   date: string;
   amount: string;
   price: string;

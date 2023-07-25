@@ -77,7 +77,6 @@ export function AddFeeModal(): ReactElement {
             </Button>
             <Button
               colorScheme="blue"
-              mr={3}
               onClick={handleSubmit(resolveSubmitResult)}
             >
               Save

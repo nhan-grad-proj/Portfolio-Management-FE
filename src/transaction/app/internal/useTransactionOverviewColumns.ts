@@ -7,14 +7,7 @@ export function useTransactionOverviewColumns(): Column<TransactionColumn>[] {
     return [
       {
         Header: 'Operation',
-        accessor: 'operation',
-        maxWidth: 100,
-        minWidth: 80,
-        width: 80
-      },
-      {
-        Header: 'Holding',
-        accessor: 'holding',
+        accessor: col => col.operation.toUpperCase(),
         maxWidth: 100,
         minWidth: 80,
         width: 80

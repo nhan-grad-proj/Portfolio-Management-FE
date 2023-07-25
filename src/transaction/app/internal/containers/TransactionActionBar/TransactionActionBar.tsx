@@ -10,15 +10,12 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { AddTransactionModal } from './AddTransactionModal/AddTransactionModal';
-import { AddFeeModal } from './AddFeeModal/AddFeeModal';
 
 export function TransactionActionBar(): ReactElement {
   return (
     <Flex>
       <div className="space-x-2">
         <AddTransactionModal />
-
-        <AddFeeModal />
       </div>
 
       <Spacer />
