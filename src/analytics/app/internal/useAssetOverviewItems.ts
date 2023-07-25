@@ -1,13 +1,10 @@
 import { useMemo } from 'react';
 import { AnalyticColumn } from './app-models/analytic.model';
-import { useQueryPortfolioDetail } from '../../../portfolio/app/internal/useQueryPortfolioDetail';
-import { useSelector } from 'react-redux';
-import { selectedPortfolioId } from '../../../system/app/internal/system.store';
 import { EMPTY_ARRAY } from '../../../system/domain/constants';
+import { useCurrentPortfolioDetail } from '../../../portfolio/app/internal/useCurrentPortfolioDetail';
 
 export function useAssetOverviewItems(): AnalyticColumn[] {
-  const portfolioId = useSelector(selectedPortfolioId);
-  const { portfolio } = useQueryPortfolioDetail(portfolioId ?? NaN);
+  const { portfolio } = useCurrentPortfolioDetail();
 
   return useMemo(() => {
     if (!portfolio) return EMPTY_ARRAY;
