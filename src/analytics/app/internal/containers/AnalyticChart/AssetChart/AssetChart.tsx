@@ -1,4 +1,4 @@
-import { Grid, GridItem, Heading, Progress } from '@chakra-ui/react';
+import { Grid, GridItem, Heading } from '@chakra-ui/react';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ReactElement, useMemo } from 'react';

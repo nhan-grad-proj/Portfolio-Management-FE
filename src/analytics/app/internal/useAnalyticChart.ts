@@ -1,6 +1,5 @@
 import { ChartData } from 'chart.js';
 import { useMemo } from 'react';
-import { useQueryPortfolioDetail } from '../../../portfolio/app/internal/useQueryPortfolioDetail';
 import { useCurrentPortfolioDetail } from '../../../portfolio/app/internal/useCurrentPortfolioDetail';
 import { SYSTEM_COLORS } from '../../../system/infrastructure/config/chakra-ui.config';
 import { AssetOverview } from '../../../assets/domain/assets.usecase';
