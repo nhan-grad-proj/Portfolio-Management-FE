@@ -10,10 +10,13 @@ export type AnalyticColumn = {
   sumFee: number;
 };
 
+export type TrendingType = 'neutral' | 'positive' | 'negative';
+
 export type TrendingItem = {
   tag: string;
-  type: 'neutral' | 'positive' | 'negative';
+  type: TrendingType;
   content: string;
+  created: string;
 };
 export type TrendingViews = {
   tag: TrendingItem[];

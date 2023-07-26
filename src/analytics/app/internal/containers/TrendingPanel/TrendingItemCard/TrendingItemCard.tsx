@@ -1,13 +1,7 @@
-import {
-  Card,
-  CardBody,
-  CardBodyProps,
-  HStack,
-  Tag,
-  Text
-} from '@chakra-ui/react';
+import { Card, CardBody, CardBodyProps, HStack, Text } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 import { TrendingItem } from '../../../app-models/analytic.model';
+import { TrendingTag } from '../TrendingTag/TrendingTag';
 
 type Props = TrendingItem &
   Omit<CardBodyProps, 'onClick'> & {
@@ -18,20 +12,16 @@ export function TrendingItemCard({
   tag,
   type = 'neutral',
   content,
+  created,
   onClick,
   ...rest
 }: Props): ReactElement {
-  const typeColor = {
-    positive: 'green',
-    neutral: 'yellow',
-    negative: 'gray'
-  }[type];
-
   function handleClick() {
     onClick?.({
       tag,
       type,
-      content
+      content,
+      created
     });
   }
 
@@ -43,9 +33,8 @@ export function TrendingItemCard({
             <Text fontSize="md" fontWeight="semibold">
               {tag}
             </Text>
-            <Tag variant="solid" colorScheme={typeColor}>
-              {type}
-            </Tag>
+
+            <TrendingTag tagType={type} />
           </HStack>
 
           <Text noOfLines={3}>{content}</Text>
