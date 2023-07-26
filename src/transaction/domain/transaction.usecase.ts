@@ -14,6 +14,12 @@ export type CreateTransactionPayload = {
   fee: number;
 };
 
+type Asset = {
+  id: string;
+  name: string;
+  symbol: string;
+};
+
 export type Transaction = {
   id: string;
   created: string;
@@ -24,7 +30,7 @@ export type Transaction = {
   price: string;
   fee: string;
   notes: string;
-  asset: string;
+  asset_info: Asset;
 };
 
 export type TransactionUsecase = {

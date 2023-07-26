@@ -13,6 +13,13 @@ export function useTransactionOverviewColumns(): Column<TransactionColumn>[] {
         width: 80
       },
       {
+        Header: 'Asset',
+        accessor: 'asset',
+        maxWidth: 100,
+        minWidth: 80,
+        width: 80
+      },
+      {
         Header: 'Date',
         accessor: 'date',
         maxWidth: 100,

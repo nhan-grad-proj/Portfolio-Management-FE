@@ -15,6 +15,11 @@ export function useQueryMenu() {
           id: 'transaction.',
           name: 'Transaction',
           accessLink: '/transaction'
+        },
+        {
+          id: 'trending.',
+          name: 'Trending',
+          accessLink: '/trending'
         }
       ] as MenuItem[];
     }

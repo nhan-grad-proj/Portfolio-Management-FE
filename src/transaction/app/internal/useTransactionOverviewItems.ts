@@ -12,6 +12,8 @@ export function useTransactionOverviewItems(): TransactionColumn[] {
   return useMemo(() => {
     return transactions.map(transaction => {
       return {
+        asset:
+          transaction.asset_info.name + ' ' + transaction.asset_info.symbol,
         amount: formatDecimal(+transaction.quantity),
         date: transaction.transaction_date,
         fee: formatCurrency(+transaction.fee),

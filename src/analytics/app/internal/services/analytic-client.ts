@@ -1,13 +1,16 @@
 import {
   AnalyticUseCase,
-  HoldingModel,
-  InvestmentAnalysisResults
+  InvestmentAnalysisResults,
+  Trending
 } from '../../../domain/analytic.usecase';
 import { authorizedHttpClient } from '../../../../system/infrastructure/factories/http-client.factories';
 
 export const analyticClient: AnalyticUseCase = {
-  getHoldings(): Promise<HoldingModel[]> {
-    return Promise.resolve([]);
+  getTrending(): Promise<Trending> {
+    return authorizedHttpClient.request({
+      method: 'get',
+      url: '/trendingcontents/'
+    });
   },
   getInvestmentAnalysisResults(
     portfolioId: number

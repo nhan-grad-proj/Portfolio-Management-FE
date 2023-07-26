@@ -104,7 +104,7 @@ export function AddTransactionModal(): ReactElement {
 
   return (
     <>
-      {<FullLoader isLoading={isLoading} />}
+      <FullLoader isLoading={isLoading} />
 
       <Button
         colorScheme="blue"

@@ -23,9 +23,32 @@ export type InvestmentAnalysisResults = {
   worst_performer: Performer;
 };
 
+export interface Trending {
+  crypto: Crypto;
+  tag: Tag;
+}
+
+export interface Crypto {
+  data: TrendDetail[];
+  type: string;
+  created: string;
+}
+
+export interface TrendDetail {
+  tag: string;
+  type: string;
+  key_points: string;
+}
+
+export interface Tag {
+  data: TrendDetail[];
+  type: string;
+  created: string;
+}
+
 export type AnalyticUseCase = {
-  getHoldings: () => Promise<HoldingModel[]>;
   getInvestmentAnalysisResults: (
     portfolioId: number
   ) => Promise<InvestmentAnalysisResults>;
+  getTrending: () => Promise<Trending>;
 };
