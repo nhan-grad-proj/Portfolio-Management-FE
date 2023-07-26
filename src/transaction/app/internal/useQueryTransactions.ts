@@ -2,8 +2,10 @@ import { useQuery } from 'react-query';
 import { transactionClient } from './services/transaction.client';
 import { EMPTY_ARRAY } from '../../../system/domain/constants';
 
+export const TRANSACTIONS_QUERY_KEY = 'useQueryTransactions';
+
 export function useQueryTransactions() {
-  const { data } = useQuery('getAllTransactions', {
+  const { data } = useQuery(TRANSACTIONS_QUERY_KEY, {
     queryFn: transactionClient.get
   });
 

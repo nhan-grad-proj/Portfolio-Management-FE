@@ -1,13 +1,10 @@
-import { ReactElement } from 'react';
 import { Grid, GridItem } from '@chakra-ui/react';
+import { ReactElement } from 'react';
 import { OverviewCard } from '../../ui/OverviewCard/OverviewCard';
 import { useAnalyticOverviewItems } from '../../useAnalyticOverviewItems';
-import { useSelector } from 'react-redux';
-import { selectedPortfolioSelector } from '../../../../../system/app/internal/system.store';
 
 export function OverviewAnalyticsPanel(): ReactElement {
-  const selectedPortfolio = useSelector(selectedPortfolioSelector);
-  const items = useAnalyticOverviewItems(selectedPortfolio?.id ?? NaN);
+  const items = useAnalyticOverviewItems();
 
   return (
     <Grid

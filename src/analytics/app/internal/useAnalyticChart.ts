@@ -14,6 +14,21 @@ export function useAnalyticChart(): ChartData<'doughnut', number[], string> {
       SYSTEM_COLORS.primary,
       SYSTEM_COLORS.success
     ];
+
+    if (!portfolio || !portfolio?.assets?.length) {
+      return {
+        labels: ['No data'],
+        datasets: [
+          {
+            label: 'All Holdings',
+            data: [1],
+            backgroundColor: [queuesColors.pop()],
+            hoverOffset: 4
+          }
+        ]
+      };
+    }
+
     const maxSupportColors = queuesColors.length;
 
     let labels: string[] = [];
@@ -60,5 +75,5 @@ export function useAnalyticChart(): ChartData<'doughnut', number[], string> {
         }
       ]
     };
-  }, [portfolio?.assets]);
+  }, [portfolio]);
 }

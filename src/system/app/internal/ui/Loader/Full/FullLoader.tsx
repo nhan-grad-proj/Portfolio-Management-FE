@@ -1,16 +1,21 @@
 import { Audio } from 'react-loader-spinner';
 import React from 'react';
 import classes from './FullLoader.module.scss';
+import classNames from 'classnames';
 
 type FullLoaderProps = {
   isLoading?: boolean;
+  className?: string;
 };
 
-export function FullLoader(props: FullLoaderProps): React.ReactElement {
+export function FullLoader({
+  isLoading,
+  className
+}: FullLoaderProps): React.ReactElement {
   return (
     <>
-      {props.isLoading && (
-        <div className={classes['loader-wrapper']}>
+      {isLoading && (
+        <div className={classNames(classes['loader-wrapper'], className)}>
           <Audio height="100" width="100" color="grey" ariaLabel="loading" />
         </div>
       )}

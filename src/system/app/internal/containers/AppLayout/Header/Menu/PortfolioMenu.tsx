@@ -1,8 +1,11 @@
-import { ReactElement, useEffect } from 'react';
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
-import { useDispatch, useSelector } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faSuitcase } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ReactElement, useEffect } from 'react';
+import { useQueryClient } from 'react-query';
+import { useDispatch, useSelector } from 'react-redux';
+import { ANALYTIC_RESULT_QUERY_KEY } from 'src/analytics/app/internal/useInvestmentAnalysisResults';
+import { QUERY_PORTFOLIO_DETAIL_KEY } from 'src/portfolio/app/internal/useQueryPortfolioDetail';
 import { AddPortfolioModal } from '../../../../../../../portfolio/app/internal/containers/AddPortfolioModal/AddPortfolioModal';
 import { Portfolio } from '../../../../../../../portfolio/domain/portfolio.usecase';
 import {
@@ -17,6 +20,7 @@ type Props = {
 export function PortfolioMenu({ items }: Props): ReactElement {
   const dispatch = useDispatch();
   const selectedPortfolio = useSelector(selectedPortfolioSelector);
+  const queryClient = useQueryClient();
 
   function handleSelectPortfolio(portfolio: Portfolio) {
     return function handler() {
@@ -43,6 +47,22 @@ export function PortfolioMenu({ items }: Props): ReactElement {
     [dispatch, items, selectedPortfolio]
   );
 
+  useEffect(
+    function invalidateRelatedData() {
+      if (!selectedPortfolio?.id) return;
+
+      queryClient.refetchQueries([
+        QUERY_PORTFOLIO_DETAIL_KEY,
+        selectedPortfolio.id
+      ]);
+      queryClient.refetchQueries([
+        ANALYTIC_RESULT_QUERY_KEY,
+        selectedPortfolio.id
+      ]);
+    },
+    [queryClient, selectedPortfolio]
+  );
+
   return (
     <Menu>
       <MenuButton as={Button}>
@@ -51,7 +71,7 @@ export function PortfolioMenu({ items }: Props): ReactElement {
         <FontAwesomeIcon icon={faCaretDown} />
       </MenuButton>
 
-      <MenuList>
+      <MenuList zIndex={50}>
         {items.map(portfolio => {
           return (
             <MenuItem

@@ -37,7 +37,7 @@ export function useAnalyticColumns(): Column<AnalyticColumn>[] {
       {
         Header: 'Purchase price',
         accessor: ({ purchasePrice }) =>
-          '$' + formatCurrency(parseFloat(purchasePrice)),
+          formatCurrency(parseFloat(purchasePrice)),
         maxWidth: 100,
         minWidth: 80,
         width: 80
