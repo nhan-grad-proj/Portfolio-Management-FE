@@ -1,14 +1,32 @@
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import { Grid, GridItem, Text } from '@chakra-ui/react';
 import { TrendingItemCard } from './TrendingItemCard/TrendingItemCard';
 import { useTrendingItems } from '../../useTrendingItems';
+import { TrendingDetailModal } from './TrendingDetailModal/TrendingDetailModal';
+import { useDisclosure } from '@chakra-ui/hooks';
+import { TrendingItem } from '../../app-models/analytic.model';
 
 export function TrendingPanel(): ReactElement {
   const { tag, crypto } = useTrendingItems();
+  const { isOpen, onClose, onOpen } = useDisclosure();
+  const [selectedItem, setSelectedItem] = useState<TrendingItem | undefined>();
+
+  function openDetail(item: TrendingItem) {
+    setSelectedItem(item);
+    onOpen();
+  }
 
   return (
     <>
-      <div>
+      <div className="cursor-pointer">
+        {isOpen && (
+          <TrendingDetailModal
+            isOpen={isOpen}
+            onClose={onClose}
+            {...(selectedItem as TrendingItem)}
+          />
+        )}
+
         <Text fontSize="2xl" fontWeight="bold">
           Trending crypto
         </Text>
@@ -21,14 +39,14 @@ export function TrendingPanel(): ReactElement {
           {crypto.map(item => {
             return (
               <GridItem key={item.tag}>
-                <TrendingItemCard {...item} />
+                <TrendingItemCard {...item} onClick={openDetail} />
               </GridItem>
             );
           })}
         </Grid>
       </div>
 
-      <div>
+      <div className="cursor-pointer">
         <Text fontSize="2xl" fontWeight="bold">
           Trending tokens
         </Text>
@@ -41,7 +59,7 @@ export function TrendingPanel(): ReactElement {
           {tag.map(item => {
             return (
               <GridItem key={item.tag}>
-                <TrendingItemCard {...item} />
+                <TrendingItemCard {...item} onClick={openDetail} />
               </GridItem>
             );
           })}

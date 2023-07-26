@@ -10,7 +10,11 @@ export type AnalyticColumn = {
   sumFee: number;
 };
 
-export type TrendingItem = { tag: string; type: string; content: string };
+export type TrendingItem = {
+  tag: string;
+  type: 'neutral' | 'positive' | 'negative';
+  content: string;
+};
 export type TrendingViews = {
   tag: TrendingItem[];
   crypto: TrendingItem[];
