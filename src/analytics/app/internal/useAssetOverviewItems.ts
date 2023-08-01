@@ -2,7 +2,10 @@ import { useMemo } from 'react';
 import { AnalyticColumn } from './app-models/analytic.model';
 import { EMPTY_ARRAY } from '../../../system/domain/constants';
 import { useCurrentPortfolioDetail } from '../../../portfolio/app/internal/useCurrentPortfolioDetail';
-import { formatDecimal } from '../../../system/app/internal/number.utils';
+import {
+  formatCurrency,
+  formatDecimal
+} from '../../../system/app/internal/number.utils';
 
 export function useAssetOverviewItems(): AnalyticColumn[] {
   const { portfolio } = useCurrentPortfolioDetail();
@@ -13,7 +16,7 @@ export function useAssetOverviewItems(): AnalyticColumn[] {
     return portfolio.assets.map(item => {
       return {
         id: item.id,
-        currentPrice: formatCurrency(item.current_price),
+        currentPrice: +formatCurrency(item.current_price),
         name: item.name,
         portfolio: item.portfolio,
         purchaseDate: item.purchase_date,
