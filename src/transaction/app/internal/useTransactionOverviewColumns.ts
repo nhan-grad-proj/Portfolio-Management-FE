@@ -46,6 +46,13 @@ export function useTransactionOverviewColumns(): Column<TransactionColumn>[] {
         maxWidth: 100,
         minWidth: 80,
         width: 80
+      },
+      {
+        Header: 'Total',
+        accessor: 'total',
+        maxWidth: 100,
+        minWidth: 80,
+        width: 80
       }
     ];
   }, []);

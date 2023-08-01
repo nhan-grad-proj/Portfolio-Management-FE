@@ -13,7 +13,7 @@ export function useAssetOverviewItems(): AnalyticColumn[] {
     return portfolio.assets.map(item => {
       return {
         id: item.id,
-        currentPrice: item.current_price,
+        currentPrice: formatCurrency(item.current_price),
         name: item.name,
         portfolio: item.portfolio,
         purchaseDate: item.purchase_date,

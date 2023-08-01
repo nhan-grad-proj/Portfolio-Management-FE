@@ -48,7 +48,7 @@ export function TrendingPanel(): ReactElement {
 
       <div className="cursor-pointer">
         <Text fontSize="2xl" fontWeight="bold">
-          Trending tokens
+          Trending topics
         </Text>
 
         <Grid
