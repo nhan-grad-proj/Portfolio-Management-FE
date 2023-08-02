@@ -14,15 +14,14 @@ export const assetClient: AssetsUsecase = {
     });
   },
   async search(symbol: string): Promise<AssetSearchResult[]> {
-    const response = await authorizedHttpClient.request<
-      Pagination<AssetSearchResult>
-    >({
+    const response = await authorizedHttpClient.request<AssetSearchResult[]>({
       method: 'get',
       url: '/assetinfos/',
       params: {
         search: symbol
       }
     });
+
     return response;
   }
 };
