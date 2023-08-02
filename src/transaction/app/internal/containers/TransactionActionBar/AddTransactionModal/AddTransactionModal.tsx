@@ -78,7 +78,9 @@ export function AddTransactionModal(): ReactElement {
   const ticketItems: BoxItem[] = useMemo(() => {
     return assets.map(asset => ({
       text: asset.symbol,
-      value: asset.symbol
+      value: asset.symbol,
+      name: asset.name,
+      imageUrl: asset.image_url
     }));
   }, [assets]);
 

@@ -52,7 +52,12 @@ export const Combobox = ({
           <HeadlessCombobox.Options className={classes['option-container']}>
             {filteredItems.map(item => (
               <HeadlessCombobox.Option key={item.value} value={item}>
-                <Item text={item.text} value={item.value} />
+                <Item
+                  text={item.text}
+                  value={item.value}
+                  imageUrl={item.imageUrl}
+                  name={item.name}
+                />
               </HeadlessCombobox.Option>
             ))}
           </HeadlessCombobox.Options>

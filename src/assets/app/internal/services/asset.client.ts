@@ -3,7 +3,6 @@ import {
   AssetSearchResult,
   AssetsUsecase
 } from '../../../domain/assets.usecase';
-import { Pagination } from '../../../../system/domain/entities/pagination.types';
 import { authorizedHttpClient } from '../../../../system/infrastructure/factories/http-client.factories';
 
 export const assetClient: AssetsUsecase = {
@@ -14,16 +13,14 @@ export const assetClient: AssetsUsecase = {
     });
   },
   async search(symbol: string): Promise<AssetSearchResult[]> {
-    const { results } = await authorizedHttpClient.request<
-      Pagination<AssetSearchResult>
-    >({
+    const response = await authorizedHttpClient.request<AssetSearchResult[]>({
       method: 'get',
-      url: '/assets/all/',
+      url: '/assetinfos/',
       params: {
         search: symbol
       }
     });
 
-    return results;
+    return response;
   }
 };
