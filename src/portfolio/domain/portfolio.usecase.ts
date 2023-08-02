@@ -35,4 +35,5 @@ export type PortfolioUseCase = {
   getAll: () => Promise<Portfolio[]>;
   getDetail: (portfolioId: number) => Promise<PortfolioDetail>;
   createOne: (payload: CreatePortfolioPayload) => Promise<void>;
+  deleteOne: (portfolioId: number) => Promise<void>;
 };

@@ -67,7 +67,7 @@ export function PortfolioMenu({ items }: Props): ReactElement {
     <Menu>
       <MenuButton as={Button}>
         <FontAwesomeIcon icon={faSuitcase} />
-        <span className="mx-2">Portfolio</span>
+        <span className="mx-2">{selectedPortfolio?.name ?? 'Portfolio'}</span>
         <FontAwesomeIcon icon={faCaretDown} />
       </MenuButton>
 

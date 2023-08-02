@@ -17,9 +17,9 @@ export function useQueryMenu() {
           accessLink: '/transaction'
         },
         {
-          id: 'trending.',
-          name: 'Trending',
-          accessLink: '/trending'
+          id: 'portfolios.',
+          name: 'Portfolios',
+          accessLink: '/portfolios'
         }
       ] as MenuItem[];
     }

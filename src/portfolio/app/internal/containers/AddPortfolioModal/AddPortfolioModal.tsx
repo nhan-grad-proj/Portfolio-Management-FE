@@ -14,7 +14,7 @@ import {
   Textarea,
   useDisclosure
 } from '@chakra-ui/react';
-import { ReactElement } from 'react';
+import { FC, ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from 'react-hook-form';
@@ -26,12 +26,20 @@ import { useNotify } from '../../../../../system/app/internal/useNotify';
 import { useQueryClient } from 'react-query';
 import { QUERY_MY_PORTFOLIOS_KEY } from '../../useQueryMyPortfolios';
 
+type ModalProps = {
+  triggerButton?: FC<{
+    onClick?: () => void;
+  }>;
+};
+
 const validateSchema = object().shape({
   name: string().required('Please input name of portfolio'),
   description: string().optional()
 });
 
-export function AddPortfolioModal(): ReactElement {
+export function AddPortfolioModal({
+  triggerButton: TriggerButton
+}: ModalProps): ReactElement {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const notify = useNotify();
   const {
@@ -58,10 +66,14 @@ export function AddPortfolioModal(): ReactElement {
 
   return (
     <>
-      <div onClick={onOpen}>
-        <FontAwesomeIcon icon={faPlus} />
-        <span className="ml-2">Add Portfolio</span>
-      </div>
+      {TriggerButton ? (
+        <TriggerButton onClick={onOpen} />
+      ) : (
+        <div onClick={onOpen}>
+          <FontAwesomeIcon icon={faPlus} />
+          <span className="ml-2">Add Portfolio</span>
+        </div>
+      )}
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

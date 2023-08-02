@@ -25,5 +25,11 @@ export const portfolioClient: PortfolioUseCase = {
       method: 'get',
       url: '/portfolios/'
     });
+  },
+  deleteOne: (portfolioId: number): Promise<void> => {
+    return authorizedHttpClient.request({
+      method: 'delete',
+      url: `/portfolios/${portfolioId}`
+    });
   }
 };

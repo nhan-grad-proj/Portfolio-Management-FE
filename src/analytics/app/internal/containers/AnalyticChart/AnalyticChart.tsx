@@ -19,7 +19,6 @@ export function AnalyticChart(): ReactElement {
       <Tabs variant="soft-rounded" className="space-y-4">
         <TabList>
           <Tab>Assets</Tab>
-          <Tab>Classes</Tab>
         </TabList>
 
         <TabPanels>
@@ -29,10 +28,6 @@ export function AnalyticChart(): ReactElement {
                 <AssetChart />
               </CardBody>
             </Card>
-          </TabPanel>
-
-          <TabPanel>
-            <p>two!</p>
           </TabPanel>
         </TabPanels>
       </Tabs>
