@@ -11,14 +11,22 @@ export function useTransactionOverviewItems(): TransactionColumn[] {
 
   return useMemo(() => {
     return transactions.map(transaction => {
+      const amount = +transaction.quantity;
+      const price = +transaction.price;
+      const fee = +transaction.fee;
+
+      // Calculate the total value for the transaction.
+      const total = amount * price + fee;
+
       return {
         asset:
           transaction.asset_info.name + ' ' + transaction.asset_info.symbol,
-        amount: formatDecimal(+transaction.quantity),
+        amount: formatDecimal(amount),
         date: transaction.transaction_date,
-        fee: formatCurrency(+transaction.fee),
+        fee: formatCurrency(fee),
         operation: transaction.transaction_type,
-        price: formatCurrency(+transaction.price)
+        price: formatCurrency(price),
+        total: formatCurrency(total) // Format the total value as a decimal.
       };
     });
   }, [transactions]);

@@ -202,7 +202,7 @@ export function AddTransactionModal(): ReactElement {
             </Grid>
 
             <FormControl isInvalid={!!errors.fee}>
-              <FormLabel>Price</FormLabel>
+              <FormLabel>Fee</FormLabel>
               <Input {...register('fee')} type="number" />
 
               {errors.fee && (
