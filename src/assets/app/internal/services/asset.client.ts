@@ -3,7 +3,6 @@ import {
   AssetSearchResult,
   AssetsUsecase
 } from '../../../domain/assets.usecase';
-import { Pagination } from '../../../../system/domain/entities/pagination.types';
 import { authorizedHttpClient } from '../../../../system/infrastructure/factories/http-client.factories';
 
 export const assetClient: AssetsUsecase = {

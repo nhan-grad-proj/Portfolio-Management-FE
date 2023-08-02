@@ -2,6 +2,8 @@ export type AssetSearchResult = {
   symbol: string;
   current_price: string;
   type: string;
+  name: string;
+  image_url: string;
 };
 
 export interface AssetOverview {
