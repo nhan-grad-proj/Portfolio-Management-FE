@@ -56,21 +56,7 @@ export function Header(): ReactElement {
               <MenuItemOption value="short">
                 {userSession?.username}
               </MenuItemOption>
-
               <MenuDivider />
-
-              <MenuItemOption value="my-account">My account</MenuItemOption>
-              <MenuItemOption value="my-subscription">
-                My subscription
-              </MenuItemOption>
-
-              <MenuDivider />
-
-              <MenuItemOption value="help">Help</MenuItemOption>
-              <MenuItemOption value="news">What's new</MenuItemOption>
-
-              <MenuDivider />
-
               <MenuItemOption value="sign-out" onClick={logOut}>
                 Sign Out
               </MenuItemOption>

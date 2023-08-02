@@ -13,13 +13,14 @@ export function ActionCell({
   value
 }: CellProps<PortfolioOverviewColumn, number>): ReactElement {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { deletePortfolioById } = useDeletePortfolioMutation(value);
+  const { deletePortfolioById } = useDeletePortfolioMutation();
   const queryClient = useQueryClient();
 
   function handleConfirm() {
-    deletePortfolioById();
+    deletePortfolioById(value, {
+      onSuccess: () => queryClient.invalidateQueries(QUERY_MY_PORTFOLIOS_KEY)
+    });
     onClose();
-    queryClient.invalidateQueries(QUERY_MY_PORTFOLIOS_KEY);
   }
 
   return (
