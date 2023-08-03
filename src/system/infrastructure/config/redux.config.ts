@@ -3,12 +3,14 @@ import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects';
 import { systemReducer } from '../../app/internal/system.store';
 import { analyticReducer } from '../../../analytics/app/internal/analytics.store';
+import { portfolioReducer } from 'src/portfolio/app/internal/portfolio.store';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
   system: systemReducer,
-  analytic: analyticReducer
+  analytic: analyticReducer,
+  portfolio: portfolioReducer
 });
 
 function* rootSaga() {
