@@ -8,7 +8,7 @@ import {
   Spacer
 } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { AddPortfolioModal } from '../AddPortfolioModal/AddPortfolioModal';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -55,11 +55,6 @@ export function PortfolioActionBar(): ReactElement {
             <FontAwesomeIcon icon={faSearch} />
           </InputRightElement>
         </InputGroup>
-
-        <Button className="space-x-2">
-          <FontAwesomeIcon icon={faFilter} />
-          <span>Filters</span>
-        </Button>
       </Flex>
     </Flex>
   );

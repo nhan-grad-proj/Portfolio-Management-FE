@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
 import {
-  Button,
   Flex,
   Input,
   InputGroup,
@@ -8,7 +7,7 @@ import {
   Spacer
 } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { AddTransactionModal } from './AddTransactionModal/AddTransactionModal';
 
 export function TransactionActionBar(): ReactElement {
@@ -27,11 +26,6 @@ export function TransactionActionBar(): ReactElement {
             <FontAwesomeIcon icon={faSearch} />
           </InputRightElement>
         </InputGroup>
-
-        <Button className="space-x-2">
-          <FontAwesomeIcon icon={faFilter} />
-          <span>Filters</span>
-        </Button>
       </Flex>
     </Flex>
   );

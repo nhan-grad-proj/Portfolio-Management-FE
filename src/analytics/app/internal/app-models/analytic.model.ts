@@ -1,7 +1,7 @@
 export type AnalyticColumn = {
   id: number;
   name: string;
-  currentPrice: number;
+  currentPrice: string;
   tickerSymbol: string;
   quantity: string;
   purchasePrice: string;

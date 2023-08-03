@@ -20,6 +20,11 @@ export function useQueryMenu() {
           id: 'portfolios.',
           name: 'Portfolios',
           accessLink: '/portfolios'
+        },
+        {
+          id: 'latest-news.',
+          name: 'News',
+          accessLink: '/news'
         }
       ] as MenuItem[];
     }

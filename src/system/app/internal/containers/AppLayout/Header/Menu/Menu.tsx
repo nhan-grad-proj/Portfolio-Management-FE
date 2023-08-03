@@ -32,6 +32,7 @@ export function HeaderMenu({
             colorScheme={activeMenu.id === menu.id ? 'blue' : 'gray'}
             paddingX={'2'}
             paddingY={'1'}
+            minW="4rem"
             key={menu.id}
             onClick={handleMenuClick(menu)}
           >

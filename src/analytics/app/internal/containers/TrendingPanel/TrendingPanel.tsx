@@ -5,6 +5,7 @@ import { useTrendingItems } from '../../useTrendingItems';
 import { TrendingDetailModal } from './TrendingDetailModal/TrendingDetailModal';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { TrendingItem } from '../../app-models/analytic.model';
+import { SummarizeCard } from '../../../../../system/app/internal/containers/SummarizeConcept/Card/SummarizeCard/SummarizeCard';
 
 export function TrendingPanel(): ReactElement {
   const { tag, crypto } = useTrendingItems();
@@ -39,7 +40,7 @@ export function TrendingPanel(): ReactElement {
           {crypto.map(item => {
             return (
               <GridItem key={item.tag}>
-                <TrendingItemCard {...item} onClick={openDetail} />
+                <SummarizeCard {...item} onClick={openDetail} />
               </GridItem>
             );
           })}

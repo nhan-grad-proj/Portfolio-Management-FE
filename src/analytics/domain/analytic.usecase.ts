@@ -46,9 +46,20 @@ export interface Tag {
   created: string;
 }
 
+export interface New {
+  id: number;
+  content: string;
+  summary: any;
+  sentiment: any;
+  source: string;
+  published_date: string;
+  topic: string;
+}
+
 export type AnalyticUseCase = {
   getInvestmentAnalysisResults: (
     portfolioId: number
   ) => Promise<InvestmentAnalysisResults>;
   getTrending: () => Promise<Trending>;
+  getNews: () => Promise<New[]>;
 };
