@@ -27,8 +27,25 @@ export type CreatePortfolioPayload = {
   description: string;
 };
 
+export interface Insight {
+  profit_factor: string;
+  sharpe_ratio: string;
+  ulcer_index: string;
+  information_ratio: string;
+  appraisal_ratio: string;
+  ucrp_sharpe: string;
+  beta_alpha: string;
+  annualized_return: string;
+  annualized_volatility: string;
+  longest_drawdown: string;
+  max_drawdown: string;
+  winning_days: string;
+  annual_turnover: string;
+}
+
 export type PortfolioDetail = Portfolio & {
   assets: AssetOverview[];
+  insights: Insight[];
 };
 
 export type PortfolioUseCase = {

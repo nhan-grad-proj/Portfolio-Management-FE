@@ -12,6 +12,11 @@ export function useQueryMenu() {
           accessLink: '/analytics'
         },
         {
+          id: 'metrics.',
+          name: 'Metrics',
+          accessLink: '/metrics'
+        },
+        {
           id: 'transaction.',
           name: 'Transaction',
           accessLink: '/transaction'

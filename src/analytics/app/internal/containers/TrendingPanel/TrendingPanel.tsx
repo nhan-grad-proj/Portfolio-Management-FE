@@ -6,13 +6,14 @@ import { TrendingDetailModal } from './TrendingDetailModal/TrendingDetailModal';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { TrendingItem } from '../../app-models/analytic.model';
 import { SummarizeCard } from '../../../../../system/app/internal/containers/SummarizeConcept/Card/SummarizeCard/SummarizeCard';
+import { SummarizeItem } from '../../../../../system/domain/ui-models/summarize.model';
 
 export function TrendingPanel(): ReactElement {
   const { tag, crypto } = useTrendingItems();
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const [selectedItem, setSelectedItem] = useState<TrendingItem | undefined>();
+  const [selectedItem, setSelectedItem] = useState<SummarizeItem | undefined>();
 
-  function openDetail(item: TrendingItem) {
+  function openDetail(item: SummarizeItem) {
     setSelectedItem(item);
     onOpen();
   }
