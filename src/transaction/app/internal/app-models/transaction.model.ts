@@ -7,6 +7,7 @@ export type TransactionColumn = {
   amount: string;
   price: string;
   fee: string;
+  total: number;
 };
 
 export type AddFeeModalModel = {
