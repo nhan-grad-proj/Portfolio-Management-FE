@@ -26,7 +26,7 @@ export function useTransactionOverviewItems(): TransactionColumn[] {
         fee: formatCurrency(fee),
         operation: transaction.transaction_type,
         price: formatCurrency(price),
-        total: +formatCurrency(total) // Format the total value as a decimal.
+        total: formatCurrency(total) // Format the total value as a decimal.
       };
     });
   }, [transactions]);
