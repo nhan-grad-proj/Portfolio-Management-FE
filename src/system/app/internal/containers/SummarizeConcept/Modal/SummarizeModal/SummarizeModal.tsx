@@ -1,3 +1,4 @@
+import { UseDisclosureReturn } from '@chakra-ui/hooks/dist/use-disclosure';
 import {
   Heading,
   Modal,
@@ -8,8 +9,7 @@ import {
   ModalOverlay
 } from '@chakra-ui/react';
 import { ReactElement } from 'react';
-import { UseDisclosureReturn } from '@chakra-ui/hooks/dist/use-disclosure';
-import { differenceInHours } from 'date-fns';
+import { calculateRemainingTime } from 'src/system/app/internal/date.utilts';
 import { SummarizeItem } from '../../../../../../domain/ui-models/summarize.model';
 import { SummarizeTag } from '../../Tag/SummarizeTag';
 
@@ -32,9 +32,7 @@ export function SummarizeModal({
             {tag}
           </Heading>
           <div className="text-sm flex items-end font-light space-x-1">
-            <span>
-              about {differenceInHours(new Date(), new Date(created))}
-            </span>
+            <span>about {calculateRemainingTime(new Date(created))}</span>
             <SummarizeTag tagType={type} />
           </div>
         </ModalHeader>

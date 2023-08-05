@@ -1,12 +1,10 @@
-import { ReactElement, useState } from 'react';
-import { Grid, GridItem, Text } from '@chakra-ui/react';
-import { TrendingItemCard } from './TrendingItemCard/TrendingItemCard';
-import { useTrendingItems } from '../../useTrendingItems';
-import { TrendingDetailModal } from './TrendingDetailModal/TrendingDetailModal';
 import { useDisclosure } from '@chakra-ui/hooks';
-import { TrendingItem } from '../../app-models/analytic.model';
+import { Grid, GridItem, Text } from '@chakra-ui/react';
+import { ReactElement, useState } from 'react';
+import { SummarizeModal } from 'src/system/app/internal/containers/SummarizeConcept/Modal/SummarizeModal/SummarizeModal';
 import { SummarizeCard } from '../../../../../system/app/internal/containers/SummarizeConcept/Card/SummarizeCard/SummarizeCard';
 import { SummarizeItem } from '../../../../../system/domain/ui-models/summarize.model';
+import { useTrendingItems } from '../../useTrendingItems';
 
 export function TrendingPanel(): ReactElement {
   const { tag, crypto } = useTrendingItems();
@@ -22,10 +20,10 @@ export function TrendingPanel(): ReactElement {
     <>
       <div className="cursor-pointer">
         {isOpen && (
-          <TrendingDetailModal
+          <SummarizeModal
             isOpen={isOpen}
             onClose={onClose}
-            {...(selectedItem as TrendingItem)}
+            {...(selectedItem as SummarizeItem)}
           />
         )}
 
@@ -61,7 +59,7 @@ export function TrendingPanel(): ReactElement {
           {tag.map(item => {
             return (
               <GridItem key={item.tag}>
-                <TrendingItemCard {...item} onClick={openDetail} />
+                <SummarizeCard {...item} onClick={openDetail} />
               </GridItem>
             );
           })}
