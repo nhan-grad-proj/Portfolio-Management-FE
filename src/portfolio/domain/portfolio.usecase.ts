@@ -45,7 +45,7 @@ export interface Insight {
 
 export type PortfolioDetail = Portfolio & {
   assets: AssetOverview[];
-  insights: Insight[];
+  insights: Insight;
 };
 
 export type PortfolioUseCase = {
