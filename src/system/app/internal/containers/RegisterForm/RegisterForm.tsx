@@ -8,15 +8,14 @@ import {
   Input,
   Text
 } from '@chakra-ui/react';
-import classes from './LoginForm.module.scss';
 import { LoginModel } from '../../app-models/auth.model';
-import { useLogin } from '../../useLogin';
 import { persistentStorage } from '../../services/persistent.storage';
 import { useNotify } from '../../useNotify';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import classes from './Register.module.scss';
+import { useRegister } from '../../useRegister';
 
-export function LoginForm(): ReactElement {
+export function RegisterForm(): ReactElement {
   const {
     register,
     handleSubmit,
@@ -26,14 +25,14 @@ export function LoginForm(): ReactElement {
   const { push } = useRouter();
   const showNotify = useNotify();
 
-  const { login } = useLogin({
+  const { register: registerUser } = useRegister({
     onSuccess: credentials => {
       persistentStorage.setAccessToken(credentials.access);
       push('/');
     },
     onError: () => {
       showNotify({
-        title: 'Incorrect username or password',
+        title: 'Duplicated username',
         status: 'error'
       });
       reset();
@@ -46,7 +45,7 @@ export function LoginForm(): ReactElement {
       password: model.password
     };
 
-    login(loginCredentials);
+    registerUser(loginCredentials);
   }
 
   return (
@@ -100,13 +99,9 @@ export function LoginForm(): ReactElement {
             type="submit"
             className="w-full mt-5"
           >
-            Sign In
+            Register
           </Button>
         </form>
-
-        <Text fontSize="sm" className="text-center my-5">
-          <Link href={'register'}>Register now</Link>
-        </Text>
       </div>
     </>
   );

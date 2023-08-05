@@ -12,5 +12,14 @@ export const authClient: AuthUseCase = {
       url: '/login/',
       data: credentials
     });
+  },
+  registerByCredentials: function (
+    credentials: LoginCredentials
+  ): Promise<UserCredentials> {
+    return httpClient.request({
+      method: 'post',
+      url: '/register/',
+      data: credentials
+    });
   }
 };

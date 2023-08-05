@@ -12,6 +12,9 @@ export type AuthUseCase = {
   loginByCredentials: (
     credentials: LoginCredentials
   ) => Promise<UserCredentials>;
+  registerByCredentials: (
+    credentials: LoginCredentials
+  ) => Promise<UserCredentials>;
 };
 
 type LoginProps = {
@@ -23,6 +26,12 @@ type LoginState = {
   isMutating: boolean;
 };
 export type LoginUseCase = (props: LoginProps) => LoginState;
+
+type RegisterState = {
+  register: (payload: LoginCredentials) => void;
+  isMutating: boolean;
+};
+export type RegisterUseCase = (props: LoginProps) => RegisterState;
 
 type LogOutState = () => void;
 export type LogOutUseCase = () => LogOutState;
