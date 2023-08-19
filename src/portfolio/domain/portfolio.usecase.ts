@@ -48,8 +48,17 @@ export type PortfolioDetail = Portfolio & {
   insights: Insight;
 };
 
+export type PortfolioHistory = {
+  id: number;
+  date: string;
+  total_invested: string;
+  total_value: string;
+  portfolio: number;
+};
+
 export type PortfolioUseCase = {
   getAll: () => Promise<Portfolio[]>;
+  getPortfolioHistory: (portfolioId: number) => Promise<PortfolioHistory[]>;
   getDetail: (portfolioId: number) => Promise<PortfolioDetail>;
   createOne: (payload: CreatePortfolioPayload) => Promise<void>;
   deleteOne: (portfolioId: number) => Promise<void>;

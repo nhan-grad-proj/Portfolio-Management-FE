@@ -3,6 +3,7 @@ import { OverviewAnalyticsPanel } from '../src/analytics/app/internal/containers
 import { AnalyticTable } from '../src/analytics/app/internal/containers/AnalyticTable/AnalyticTable';
 import { AnalyticChart } from '../src/analytics/app/internal/containers/AnalyticChart/AnalyticChart';
 import { TrendingPanel } from '../src/analytics/app/internal/containers/TrendingPanel/TrendingPanel';
+import { HistoryPortfolioChart } from '../src/analytics/app/internal/containers/HistoryPortfolioChart/HistoryPortfolioChart';
 
 const AnalyticsPage: NextPage = () => {
   return (
@@ -11,6 +12,7 @@ const AnalyticsPage: NextPage = () => {
       <AnalyticTable />
       <TrendingPanel />
       <AnalyticChart />
+      <HistoryPortfolioChart />
     </div>
   );
 };

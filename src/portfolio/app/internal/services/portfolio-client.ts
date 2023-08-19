@@ -2,6 +2,7 @@ import {
   CreatePortfolioPayload,
   Portfolio,
   PortfolioDetail,
+  PortfolioHistory,
   PortfolioUseCase
 } from '../../../domain/portfolio.usecase';
 import { authorizedHttpClient } from '../../../../system/infrastructure/factories/http-client.factories';
@@ -30,6 +31,12 @@ export const portfolioClient: PortfolioUseCase = {
     return authorizedHttpClient.request({
       method: 'delete',
       url: `/portfolios/${portfolioId}`
+    });
+  },
+  getPortfolioHistory(portfolioId: number): Promise<PortfolioHistory[]> {
+    return authorizedHttpClient.request({
+      method: 'get',
+      url: `/portfolios/${portfolioId}/history`
     });
   }
 };
