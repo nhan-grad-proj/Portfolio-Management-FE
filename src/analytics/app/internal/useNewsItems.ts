@@ -43,7 +43,7 @@ export function useNewItems(): SummarizeItem[] {
       return {
         tag: newItem.topic,
         content: newItem.content,
-        type: 'analyzing',
+        type: newItem.sentiment,
         created: newItem.published_date
       };
     });
