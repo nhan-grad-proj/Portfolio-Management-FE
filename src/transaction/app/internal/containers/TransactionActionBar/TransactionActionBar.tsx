@@ -19,14 +19,14 @@ export function TransactionActionBar(): ReactElement {
 
       <Spacer />
 
-      <Flex className="space-x-2">
-        <InputGroup>
-          <Input placeholder="Search ..." />
-          <InputRightElement pointerEvents="none">
-            <FontAwesomeIcon icon={faSearch} />
-          </InputRightElement>
-        </InputGroup>
-      </Flex>
+      {/* <Flex className="space-x-2"> */}
+      {/*   <InputGroup> */}
+      {/*     <Input placeholder="Search ..." /> */}
+      {/*     <InputRightElement pointerEvents="none"> */}
+      {/*       <FontAwesomeIcon icon={faSearch} /> */}
+      {/*     </InputRightElement> */}
+      {/*   </InputGroup> */}
+      {/* </Flex> */}
     </Flex>
   );
 }

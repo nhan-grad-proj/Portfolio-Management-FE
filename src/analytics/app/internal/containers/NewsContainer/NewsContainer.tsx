@@ -22,7 +22,7 @@ export function NewsContainer(): ReactElement {
 
   return (
     <div className="cursor-pointer">
-      {isLoading && <FullLoader />}
+      <FullLoader isLoading={isLoading} />
       {isOpen && (
         <SummarizeModal
           isOpen={isOpen}
@@ -31,7 +31,11 @@ export function NewsContainer(): ReactElement {
         />
       )}
 
-      <Grid marginTop={'4'} templateColumns={'repeat(4, 1fr)'} gap={4}>
+      <Grid
+        marginTop={'4'}
+        templateColumns={'repeat(4, minmax(0, 1fr))'}
+        gap={4}
+      >
         {items.map(item => {
           return (
             <GridItem key={item.tag}>
